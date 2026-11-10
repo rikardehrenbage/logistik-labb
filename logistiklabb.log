@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.10.7)  6 NOV 2026 12:59
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.10.7)  10 NOV 2026 15:52
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1042,38 +1042,42 @@ Package: mathrsfs 1996/01/01 Math RSFS package v1.0 (jk)
 \pandoc@box=\box95
 \Wrappedcontinuationbox=\box96
 \Wrappedvisiblespacebox=\box97
-Package hyperref Info: Option `breaklinks' set `true' on input line 402.
-Package hyperref Info: Option `colorlinks' set `true' on input line 402.
+Package hyperref Info: Option `breaklinks' set `true' on input line 404.
+Package hyperref Info: Option `colorlinks' set `true' on input line 404.
  (C:\Users\rikar\AppData\Local\Programs\MiKTeX\tex/latex/l3backend\l3backend-pdftex.def
 File: l3backend-pdftex.def 2025-10-09 L3 backend support: PDF output (pdfTeX)
 \l__color_backend_stack_int=\count362
-) (logistiklabb.aux)
+) (logistiklabb.aux
+
+LaTeX Warning: Label `b-generell-modell' multiply defined.
+
+)
 \openout1 = `logistiklabb.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 409.
-LaTeX Font Info:    ... okay on input line 409.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 409.
-LaTeX Font Info:    ... okay on input line 409.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 409.
-LaTeX Font Info:    ... okay on input line 409.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 409.
-LaTeX Font Info:    ... okay on input line 409.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 409.
-LaTeX Font Info:    ... okay on input line 409.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 409.
-LaTeX Font Info:    ... okay on input line 409.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 409.
-LaTeX Font Info:    ... okay on input line 409.
-LaTeX Font Info:    Checking defaults for LGR/cmr/m/n on input line 409.
-LaTeX Font Info:    Trying to load font information for LGR+cmr on input line 409.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 411.
+LaTeX Font Info:    ... okay on input line 411.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 411.
+LaTeX Font Info:    ... okay on input line 411.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 411.
+LaTeX Font Info:    ... okay on input line 411.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 411.
+LaTeX Font Info:    ... okay on input line 411.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 411.
+LaTeX Font Info:    ... okay on input line 411.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 411.
+LaTeX Font Info:    ... okay on input line 411.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 411.
+LaTeX Font Info:    ... okay on input line 411.
+LaTeX Font Info:    Checking defaults for LGR/cmr/m/n on input line 411.
+LaTeX Font Info:    Trying to load font information for LGR+cmr on input line 411.
  (C:\Users\rikar\AppData\Local\Programs\MiKTeX\tex/latex/cbfonts-fd\lgrcmr.fd
 File: lgrcmr.fd 2017/07/29 v1.2 Greek European Computer Regular
 )
-LaTeX Font Info:    ... okay on input line 409.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 409.
-LaTeX Font Info:    ... okay on input line 409.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 409.
-LaTeX Font Info:    ... okay on input line 409.
+LaTeX Font Info:    ... okay on input line 411.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 411.
+LaTeX Font Info:    ... okay on input line 411.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 411.
+LaTeX Font Info:    ... okay on input line 411.
  (C:\Users\rikar\AppData\Local\Programs\MiKTeX\tex/context/base/mkii\supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count363
@@ -1136,15 +1140,15 @@ Package caption Info: End \AtBeginDocument code.
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-LaTeX Info: Redefining \Upsilon on input line 409.
-LaTeX Info: Redefining \Omega on input line 409.
-LaTeX Info: Redefining \alpha on input line 409.
-LaTeX Info: Redefining \epsilon on input line 409.
-LaTeX Info: Redefining \eta on input line 409.
-LaTeX Info: Redefining \iota on input line 409.
-LaTeX Info: Redefining \rho on input line 409.
-LaTeX Info: Redefining \upsilon on input line 409.
-LaTeX Info: Redefining \omega on input line 409.
+LaTeX Info: Redefining \Upsilon on input line 411.
+LaTeX Info: Redefining \Omega on input line 411.
+LaTeX Info: Redefining \alpha on input line 411.
+LaTeX Info: Redefining \epsilon on input line 411.
+LaTeX Info: Redefining \eta on input line 411.
+LaTeX Info: Redefining \iota on input line 411.
+LaTeX Info: Redefining \rho on input line 411.
+LaTeX Info: Redefining \upsilon on input line 411.
+LaTeX Info: Redefining \omega on input line 411.
    defining Unicode char U+0393 (decimal 915)
    defining Unicode char U+0394 (decimal 916)
    defining Unicode char U+0398 (decimal 920)
@@ -1186,120 +1190,180 @@ LaTeX Info: Redefining \omega on input line 409.
    defining Unicode char U+03DD (decimal 989)
    defining Unicode char U+03F1 (decimal 1009)
    defining Unicode char U+03F5 (decimal 1013)
-Package hyperref Info: Link coloring ON on input line 409.
+Package hyperref Info: Link coloring ON on input line 411.
+(logistiklabb.out) (logistiklabb.out)
 \@outlinefile=\write5
 \openout5 = `logistiklabb.out'.
 
-LaTeX Font Info:    Trying to load font information for U+msa on input line 411.
-(C:\Users\rikar\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsa.fd
+LaTeX Font Info:    Trying to load font information for U+msa on input line 413.
+ (C:\Users\rikar\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 411.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 413.
  (C:\Users\rikar\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-LaTeX Font Info:    Trying to load font information for U+rsfs on input line 411.
+LaTeX Font Info:    Trying to load font information for U+rsfs on input line 413.
  (C:\Users\rikar\AppData\Local\Programs\MiKTeX\tex/latex/jknappen\ursfs.fd
 File: ursfs.fd 1998/03/24 rsfs font definition file (jk)
 )
+\c@none=\count369
 
-LaTeX Warning: No \author given.
+
+LaTeX Warning: Command `\thenone' already defined -- not changed on input line 419.
 
 LaTeX Font Info:    Font shape `T1/cmtt/bx/n' in size <10.95> not available
-(Font)              Font shape `T1/cmtt/m/n' tried instead on input line 423.
+(Font)              Font shape `T1/cmtt/m/n' tried instead on input line 427.
 [1
 
-{C:/Users/rikar/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}] [2]
-<logistiklabb_files/logistiklabb_5_1.png, id=34, 932.283pt x 281.853pt>
-File: logistiklabb_files/logistiklabb_5_1.png Graphic file (type png)
-<use logistiklabb_files/logistiklabb_5_1.png>
-Package pdftex.def Info: logistiklabb_files/logistiklabb_5_1.png  used on input line 554.
-(pdftex.def)             Requested size: 932.28073pt x 281.85231pt.
-
-Underfull \hbox (badness 10000) in paragraph at lines 556--557
-
+{C:/Users/rikar/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}] [2] [3]
+Overfull \hbox (7.9446pt too wide) in paragraph at lines 657--658
+[]\T1/cmr/m/n/10.95 medelkostnad  
  []
 
-[3 <./logistiklabb_files/logistiklabb_5_1.png>]
-
-c:/Users/rikar/Desktop/logistik/labb/logistiklabb.tex:612: LaTeX Error: No counter 'none' defined.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.612 \begin{longtable}[]{@{}lll@{}}
-                                    
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-
-Package hyperref Warning: Counter 'none' or the representation '\theHnone`
-(hyperref)                don't exist. No target created. on input line 624.
-
-
-Package longtable Warning: Column widths have changed
-(longtable)                in none \thenone  on input line 624.
-
-[4]
-<logistiklabb_files/image.png, id=54, 583.9416pt x 360.8682pt>
-File: logistiklabb_files/image.png Graphic file (type png)
-<use logistiklabb_files/image.png>
-Package pdftex.def Info: logistiklabb_files/image.png  used on input line 706.
+c:/Users/rikar/Desktop/logistik/labb/logistiklabb.tex:696: ignored error: Infinite glue shrinkage found in box being split [4]
+<logistiklabb_files/bild01.png, id=159, 583.9416pt x 360.8682pt>
+File: logistiklabb_files/bild01.png Graphic file (type png)
+<use logistiklabb_files/bild01.png>
+Package pdftex.def Info: logistiklabb_files/bild01.png  used on input line 753.
 (pdftex.def)             Requested size: 583.94017pt x 360.86731pt.
- [5]
+ [5] [6 <./logistiklabb_files/bild01.png>] [7] [8]
 
 Package hyperref Warning: Difference (2) between bookmark levels is greater 
-(hyperref)                than one, level fixed on input line 717.
+(hyperref)                than one, level fixed on input line 984.
+
+<logistiklabb_files/bild02.png, id=183, 476.53032pt x 293.59688pt>
+File: logistiklabb_files/bild02.png Graphic file (type png)
+<use logistiklabb_files/bild02.png>
+Package pdftex.def Info: logistiklabb_files/bild02.png  used on input line 988.
+(pdftex.def)             Requested size: 476.52916pt x 293.59615pt.
+[9] [10 <./logistiklabb_files/bild02.png>]
+Overfull \hbox (11.26773pt too wide) detected at line 1052
+[]\OML/cmm/m/it/10.95 Z \OT1/cmr/m/n/10.95 = [] \OML/cmm/m/it/10.95 c[] x[];  [] x[] \OMS/cmsy/m/n/10.95 ^^T \OML/cmm/m/it/10.95 s[]  \OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 i \OMS/cmsy/m/n/10.95 2 \OML/cmm/m/it/10.95 S\OT1/cmr/m/n/10.95 )\OML/cmm/m/it/10.95 ;  [] x[] \OT1/cmr/m/n/10.95 = [] \OML/cmm/m/it/10.95 x[]  \OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 t \OMS/cmsy/m/n/10.95 2 \OML/cmm/m/it/10.95 T\OT1/cmr/m/n/10.95 )\OML/cmm/m/it/10.95 ;  [] x[] \OMS/cmsy/m/n/10.95 ^^U \OML/cmm/m/it/10.95 d[]  \OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 k \OMS/cmsy/m/n/10.95 2 \OML/cmm/m/it/10.95 K\OT1/cmr/m/n/10.95 )
+ []
+
+<logistiklabb_files/bild03.png, id=197, 455.301pt x 262.581pt>
+File: logistiklabb_files/bild03.png Graphic file (type png)
+<use logistiklabb_files/bild03.png>
+Package pdftex.def Info: logistiklabb_files/bild03.png  used on input line 1061.
+(pdftex.def)             Requested size: 455.29988pt x 262.58034pt.
+<logistiklabb_files/bild04.png, id=198, 310.2792pt x 193.2018pt>
+File: logistiklabb_files/bild04.png Graphic file (type png)
+<use logistiklabb_files/bild04.png>
+Package pdftex.def Info: logistiklabb_files/bild04.png  used on input line 1067.
+(pdftex.def)             Requested size: 310.27844pt x 193.20131pt.
+[11 <./logistiklabb_files/bild03.png>]
+<logistiklabb_files/bild05.png, id=205, 455.301pt x 241.8636pt>
+File: logistiklabb_files/bild05.png Graphic file (type png)
+<use logistiklabb_files/bild05.png>
+Package pdftex.def Info: logistiklabb_files/bild05.png  used on input line 1091.
+(pdftex.def)             Requested size: 455.29988pt x 241.863pt.
+<logistiklabb_files/bild06.png, id=206, 283.7802pt x 199.947pt>
+File: logistiklabb_files/bild06.png Graphic file (type png)
+<use logistiklabb_files/bild06.png>
+Package pdftex.def Info: logistiklabb_files/bild06.png  used on input line 1099.
+(pdftex.def)             Requested size: 283.7795pt x 199.9465pt.
+ [12 <./logistiklabb_files/bild04.png> <./logistiklabb_files/bild05.png>]
+<logistiklabb_files/bild07.png, id=215, 278.54062pt x 195.73125pt>
+File: logistiklabb_files/bild07.png Graphic file (type png)
+<use logistiklabb_files/bild07.png>
+Package pdftex.def Info: logistiklabb_files/bild07.png  used on input line 1132.
+(pdftex.def)             Requested size: 278.53993pt x 195.73076pt.
+ [13 <./logistiklabb_files/bild06.png> <./logistiklabb_files/bild07.png>]
+<logistiklabb_files/bild08.png, id=226, 284.56313pt x 193.47281pt>
+File: logistiklabb_files/bild08.png Graphic file (type png)
+<use logistiklabb_files/bild08.png>
+Package pdftex.def Info: logistiklabb_files/bild08.png  used on input line 1150.
+(pdftex.def)             Requested size: 284.56242pt x 193.47234pt.
+<logistiklabb_files/bild09.png, id=227, 455.301pt x 325.215pt>
+File: logistiklabb_files/bild09.png Graphic file (type png)
+<use logistiklabb_files/bild09.png>
+Package pdftex.def Info: logistiklabb_files/bild09.png  used on input line 1190.
+(pdftex.def)             Requested size: 455.29988pt x 325.2142pt.
+ [14 <./logistiklabb_files/bild08.png>]
+<logistiklabb_files/bild10.png, id=235, 288.1164pt x 242.3454pt>
+File: logistiklabb_files/bild10.png Graphic file (type png)
+<use logistiklabb_files/bild10.png>
+Package pdftex.def Info: logistiklabb_files/bild10.png  used on input line 1198.
+(pdftex.def)             Requested size: 288.11568pt x 242.3448pt.
+<logistiklabb_files/bild11.png, id=236, 455.301pt x 342.5598pt>
+File: logistiklabb_files/bild11.png Graphic file (type png)
+<use logistiklabb_files/bild11.png>
+Package pdftex.def Info: logistiklabb_files/bild11.png  used on input line 1209.
+(pdftex.def)             Requested size: 455.29988pt x 342.55894pt.
+ [15 <./logistiklabb_files/bild09.png> <./logistiklabb_files/bild10.png>]
+<logistiklabb_files/bild12.png, id=245, 305.943pt x 242.3454pt>
+File: logistiklabb_files/bild12.png Graphic file (type png)
+<use logistiklabb_files/bild12.png>
+Package pdftex.def Info: logistiklabb_files/bild12.png  used on input line 1217.
+(pdftex.def)             Requested size: 305.94223pt x 242.3448pt.
+<logistiklabb_files/bild13.png, id=246, 308.352pt x 242.3454pt>
+File: logistiklabb_files/bild13.png Graphic file (type png)
+<use logistiklabb_files/bild13.png>
+Package pdftex.def Info: logistiklabb_files/bild13.png  used on input line 1226.
+(pdftex.def)             Requested size: 308.35124pt x 242.3448pt.
+ [16 <./logistiklabb_files/bild11.png> <./logistiklabb_files/bild12.png>]
+<logistiklabb_files/bild14.png, id=255, 305.4612pt x 243.7908pt>
+File: logistiklabb_files/bild14.png Graphic file (type png)
+<use logistiklabb_files/bild14.png>
+Package pdftex.def Info: logistiklabb_files/bild14.png  used on input line 1236.
+(pdftex.def)             Requested size: 305.46045pt x 243.7902pt.
+ [17 <./logistiklabb_files/bild13.png> <./logistiklabb_files/bild14.png>]
+<logistiklabb_files/bild15.png, id=264, 424.58624pt x 350.81062pt>
+File: logistiklabb_files/bild15.png Graphic file (type png)
+<use logistiklabb_files/bild15.png>
+Package pdftex.def Info: logistiklabb_files/bild15.png  used on input line 1255.
+(pdftex.def)             Requested size: 424.5852pt x 350.80975pt.
+<logistiklabb_files/bild16.png, id=265, 301.8778pt x 325.215pt>
+File: logistiklabb_files/bild16.png Graphic file (type png)
+<use logistiklabb_files/bild16.png>
+Package pdftex.def Info: logistiklabb_files/bild16.png  used on input line 1268.
+(pdftex.def)             Requested size: 301.87706pt x 325.2142pt.
+ [18 <./logistiklabb_files/bild15.png>]
+<logistiklabb_files/bild17.png, id=272, 443.40656pt x 410.2828pt>
+File: logistiklabb_files/bild17.png Graphic file (type png)
+<use logistiklabb_files/bild17.png>
+Package pdftex.def Info: logistiklabb_files/bild17.png  used on input line 1279.
+(pdftex.def)             Requested size: 443.40547pt x 410.2818pt.
+ [19 <./logistiklabb_files/bild16.png>]
+<logistiklabb_files/bild18.png, id=280, 317.68687pt x 395.22656pt>
+File: logistiklabb_files/bild18.png Graphic file (type png)
+<use logistiklabb_files/bild18.png>
+Package pdftex.def Info: logistiklabb_files/bild18.png  used on input line 1290.
+(pdftex.def)             Requested size: 317.68608pt x 395.22559pt.
+ [20 <./logistiklabb_files/bild17.png>]
+
+Package hyperref Warning: Difference (2) between bookmark levels is greater 
+(hyperref)                than one, level fixed on input line 1305.
 
 
 Package hyperref Warning: Difference (2) between bookmark levels is greater 
-(hyperref)                than one, level fixed on input line 732.
+(hyperref)                than one, level fixed on input line 1320.
 
-
-Package hyperref Warning: Difference (2) between bookmark levels is greater 
-(hyperref)                than one, level fixed on input line 753.
-
-[6 <./logistiklabb_files/image.png>]
-
-Package hyperref Warning: Difference (2) between bookmark levels is greater 
-(hyperref)                than one, level fixed on input line 768.
-
-[7]
-
-Package longtable Warning: Table widths have changed. Rerun LaTeX.
-
-(logistiklabb.aux)
+[21 <./logistiklabb_files/bild18.png>] [22] (logistiklabb.aux)
  ***********
 LaTeX2e <2025-11-01>
 L3 programming layer <2025-12-24>
  ***********
 
 
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+LaTeX Warning: There were multiply-defined labels.
 
-
-Package rerunfilecheck Warning: File `logistiklabb.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `logistiklabb.out':
-(rerunfilecheck)             Before: <no file>
-(rerunfilecheck)             After:  B5F72991530D1672489A30DA00C250E6;5777.
+Package rerunfilecheck Info: File `logistiklabb.out' has not changed.
+(rerunfilecheck)             Checksum: 7BB9AE1DB46DD746E6E777724F4954A2;5398.
  ) 
 Here is how much of TeX's memory you used:
- 30044 strings out of 467871
- 573167 string characters out of 5418376
- 1062277 words of memory out of 5000000
- 58391 multiletter control sequences out of 15000+600000
+ 30248 strings out of 467871
+ 578177 string characters out of 5418376
+ 1059344 words of memory out of 5000000
+ 58549 multiletter control sequences out of 15000+600000
  644692 words of font info for 88 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 116i,7n,121p,914b,767s stack positions out of 10000i,1000n,20000p,200000b,200000s
- <C:\Users\rikar\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tctt1095.pk> <C:\Users\rikar\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm1095.pk> <C:\Users\rikar\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecti1095.pk> <C:\Users\rikar\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecit1095.pk> <C:\Users\rikar\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1200.pk> <C:\Users\rikar\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ectt1095.pk> <C:\Users\rikar\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm1095.pk> <C:\Users\rikar\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1095.pk> <C:\Users\rikar\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1440.pk> <C:\Users\rikar\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm1200.pk> <C:\Users\rikar\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm1728.pk><C:/Users/rikar/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/rikar/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/rikar/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi6.pfb><C:/Users/rikar/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Users/rikar/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/rikar/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Users/rikar/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/rikar/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy6.pfb><C:/Users/rikar/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy8.pfb>
-Output written on logistiklabb.pdf (7 pages, 327942 bytes).
+ 116i,9n,121p,914b,771s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ <C:\Users\rikar\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm1095.pk> <C:\Users\rikar\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecti1095.pk> <C:\Users\rikar\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tctt1095.pk> <C:\Users\rikar\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1200.pk> <C:\Users\rikar\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecit1095.pk> <C:\Users\rikar\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ectt1095.pk> <C:\Users\rikar\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm1095.pk> <C:\Users\rikar\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1095.pk> <C:\Users\rikar\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1440.pk> <C:\Users\rikar\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm1200.pk> <C:\Users\rikar\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm1728.pk><C:/Users/rikar/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/rikar/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/rikar/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi6.pfb><C:/Users/rikar/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Users/rikar/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/rikar/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Users/rikar/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/rikar/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy6.pfb><C:/Users/rikar/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy8.pfb>
+Output written on logistiklabb.pdf (22 pages, 2537203 bytes).
 PDF statistics:
- 535 PDF objects out of 1000 (max. 8388607)
- 39 named destinations out of 1000 (max. 500000)
- 23 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 778 PDF objects out of 1000 (max. 8388607)
+ 81 named destinations out of 1000 (max. 500000)
+ 327 words of extra memory for PDF output out of 10000 (max. 10000000)
 
