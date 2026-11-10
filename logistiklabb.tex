@@ -422,7 +422,7 @@
 \textbf{Grupp:} Rikard \& David
 
     \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
-\prompt{In}{incolor}{1}{\boxspacing}
+\prompt{In}{incolor}{963}{\boxspacing}
 \begin{Verbatim}[commandchars=\\\{\}]
 \PY{k+kn}{import}\PY{+w}{ }\PY{n+nn}{numpy}\PY{+w}{ }\PY{k}{as}\PY{+w}{ }\PY{n+nn}{np} 
 \PY{k+kn}{import}\PY{+w}{ }\PY{n+nn}{pandas}\PY{+w}{ }\PY{k}{as}\PY{+w}{ }\PY{n+nn}{pd}
@@ -494,7 +494,7 @@ vara CA 20.0\%. Genom att testa olika \(a\) mellan 0 till 1 så kommer
 MAPE:n variera mellan 14-20 \%.
 
     \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
-\prompt{In}{incolor}{2}{\boxspacing}
+\prompt{In}{incolor}{964}{\boxspacing}
 \begin{Verbatim}[commandchars=\\\{\}]
 \PY{n}{manader} \PY{o}{=} \PY{p}{[}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{jan}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{feb}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{mar}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{apr}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{maj}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{jun}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{jul}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{aug}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{sep}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{okt}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{nov}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{dec}\PY{l+s+s2}{\PYZdq{}}\PY{p}{]}
 \PY{n}{d} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{array}\PY{p}{(}\PY{p}{[}\PY{l+m+mi}{52}\PY{p}{,} \PY{l+m+mi}{51}\PY{p}{,} \PY{l+m+mi}{60}\PY{p}{,} \PY{l+m+mi}{46}\PY{p}{,} \PY{l+m+mi}{70}\PY{p}{,} \PY{l+m+mi}{50}\PY{p}{,} \PY{l+m+mi}{39}\PY{p}{,} \PY{l+m+mi}{48}\PY{p}{,} \PY{l+m+mi}{60}\PY{p}{,} \PY{l+m+mi}{70}\PY{p}{,} \PY{l+m+mi}{60}\PY{p}{]}\PY{p}{,} \PY{n}{dtype}\PY{o}{=}\PY{n+nb}{float}\PY{p}{)}
@@ -614,7 +614,7 @@ En vara klassas som A om kumulativa andelen är mindre än 80 \%, B om den
 Nedan läses Excels resultat in och formlerna hämtas direkt ur filen.
 
     \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
-\prompt{In}{incolor}{3}{\boxspacing}
+\prompt{In}{incolor}{965}{\boxspacing}
 \begin{Verbatim}[commandchars=\\\{\}]
 \PY{k+kn}{import}\PY{+w}{ }\PY{n+nn}{openpyxl}
 
@@ -698,7 +698,7 @@ klass
 
     
     \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
-\prompt{In}{incolor}{4}{\boxspacing}
+\prompt{In}{incolor}{966}{\boxspacing}
 \begin{Verbatim}[commandchars=\\\{\}]
 \PY{n}{sammanfattning} \PY{o}{=} \PY{n}{abc}\PY{o}{.}\PY{n}{groupby}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{klass}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}\PY{o}{.}\PY{n}{agg}\PY{p}{(}
     \PY{n}{antal\PYZus{}artiklar}\PY{o}{=}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{vara}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{count}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}\PY{p}{,}
@@ -760,15 +760,17 @@ sig med enkla regler, större partier och mindre kontroll.
 
 \section{2. Heltalsprogrammering}\label{heltalsprogrammering}
 
-Fyra personer kan utföra sex arbetsuppgifter. Person \(i\) som gör
-uppgift \(j\) ger vinsten \(V_{ij}\). Varje uppgift får göras av högst
-en person. Varje person har ett begränsat antal dagar, och alla
-uppgifter tar lika lång tid för en och samma person.
+I denna uppgift ska fyra arbetare genomföra sex olika arbetsuppgifter.
+Varje arbetsuppgift kan endast utföras av en arbetare. Arbetarena utför
+uppgifterna med olika arbetstider och har dessutom olika många
+tillgängliga arbetsdagar. Person 1 behöver två dagar för att utföra en
+uppgift, person 2 och 3 behöver tre dagar verdera, medan person 4
+behöver fyra dagar.
 
 \subsection{2a) Generell matematisk
 modell}\label{a-generell-matematisk-modell}
 
-\textbf{Mängder}
+\textbf{Index}
 
 \begin{itemize}
 \tightlist
@@ -778,154 +780,101 @@ modell}\label{a-generell-matematisk-modell}
   \(J = \{1,2,3,4,5,6\}\): arbetsuppgifter
 \end{itemize}
 
-\textbf{Parametrar}
+\textbf{Målfunktionen}
 
-\begin{itemize}
-\tightlist
-\item
-  \(V_{ij}\): vinst om person \(i\) utför uppgift \(j\) (kr)
-\item
-  \(t_i\): antal dagar det tar för person \(i\) att utföra en uppgift,
-  \(t = (2, 3, 3, 4)\)
-\item
-  \(T_i\): antal tillgängliga dagar för person \(i\),
-  \(T = (4, 4, 8, 8)\)
-\end{itemize}
+Målet att hitta den optimala lösningen där rätt person genomför rätt
+arbetsuppgift för att maximera den totala vinsten. Målfunktionen skrivs
+därför som:
 
-\textbf{Beslutsvariabler}
+\[
+\max Z = \sum_{i=1}^{4}\sum_{j=1}^{6} V_{ij}x_{ij}
+\]
 
+\textbf{Bivillkor}
+
+Det finns två olika bivillkor i uppgiften.
+
+Det första bivvilkoret begränsar arbetarnas arbetstid. Varje arbetare
+har ett begränsat antal tillgängliga arbtesdagar.
+
+För arbetare 1 :
+
+\[
+2\sum_{j=1}^{6}x_{1j}\leq 4
+\]
+
+För arbetare 2 :
+
+\[
+3\sum_{j=1}^{6}x_{2j}\leq 4
+\]
+
+För arbetare 3 :
+
+\[
+3\sum_{j=1}^{6}x_{3j}\leq 8
+\]
+
+För arbetare 4 :
+
+\[
+4\sum_{j=1}^{6}x_{4j}\leq 8
+\]
+
+Det andra bivillkoret innebär att varje arbetsuppgift måste tilldelas
+exakt en arbetare. Därför måste summan av varje kolumn i beslutsmatrisen
+vara lika med ett.
+
+\[
+\sum_{i=1}^{4}x_{ij}=1,
+\quad j=1,\ldots,6
+\]
+
+\textbf{Beslutvariabel}
 \[x_{ij} = \begin{cases} 1 & \text{om person } i \text{ utför uppgift } j \\ 0 & \text{annars} \end{cases}\]
-
-\textbf{Modell}
-
-\[\max\; Z = \sum_{i \in I}\sum_{j \in J} V_{ij}\,x_{ij}\]
-
-då
-
-\[\sum_{i \in I} x_{ij} \le 1 \qquad \forall j \in J \qquad \text{(varje uppgift görs av högst en person)}\]
-
-\[\sum_{j \in J} t_i\,x_{ij} \le T_i \qquad \forall i \in I \qquad \text{(personens tillgängliga tid)}\]
-
-\[x_{ij} \in \{0,1\} \qquad \forall i \in I,\ j \in J\]
-
-Det är ett generaliserat tilldelningsproblem, en person kan få flera
-uppgifter, så länge tiden räcker. Det är ett binärt heltalsproblem
-(BIP).
-
-    \subsubsection{Lösning}\label{luxf6sning}
-
-Modellen löses här i Python med \texttt{linprog}, på samma sätt som i
-labb 4. Variablerna ligger i ordningen
-\(x_{11}, \dots, x_{16}, x_{21}, \dots, x_{46}\) (person för person).
-Vinsterna läggs i \texttt{obj} med minustecken eftersom \texttt{linprog}
-minimerar, och varje bivillkor blir en rad i \texttt{Aub} och ett tal i
-\texttt{Bub}.
+Slutligen så är beslutsvariabel binär, vilket innebär att de endast kan
+vara 0 eller 1.
 
     \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
-\prompt{In}{incolor}{5}{\boxspacing}
+\prompt{In}{incolor}{967}{\boxspacing}
 \begin{Verbatim}[commandchars=\\\{\}]
-\PY{c+c1}{\PYZsh{} x11 ... x16 (person 1), x21 ... x26 (person 2), x31 ... x36 (person 3), x41 ... x46 (person 4)}
+\PY{n}{V} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{array}\PY{p}{(}\PY{p}{[}\PY{p}{[}\PY{l+m+mi}{37000}\PY{p}{,} \PY{l+m+mi}{23000}\PY{p}{,} \PY{l+m+mi}{20000}\PY{p}{,} \PY{l+m+mi}{18000}\PY{p}{,} \PY{l+m+mi}{16000}\PY{p}{,} \PY{l+m+mi}{6000}\PY{p}{]}\PY{p}{,}
+     \PY{p}{[}\PY{l+m+mi}{25000}\PY{p}{,} \PY{l+m+mi}{14000}\PY{p}{,} \PY{l+m+mi}{14000}\PY{p}{,} \PY{l+m+mi}{18000}\PY{p}{,} \PY{l+m+mi}{17000}\PY{p}{,} \PY{l+m+mi}{8000}\PY{p}{]}\PY{p}{,}
+     \PY{p}{[}\PY{l+m+mi}{5000}\PY{p}{,}  \PY{l+m+mi}{13000}\PY{p}{,} \PY{l+m+mi}{10000}\PY{p}{,} \PY{l+m+mi}{12000}\PY{p}{,}  \PY{l+m+mi}{5000}\PY{p}{,} \PY{l+m+mi}{5000}\PY{p}{]}\PY{p}{,}
+     \PY{p}{[}\PY{l+m+mi}{10000}\PY{p}{,}  \PY{l+m+mi}{3000}\PY{p}{,} \PY{l+m+mi}{13000}\PY{p}{,}  \PY{l+m+mi}{7000}\PY{p}{,}  \PY{l+m+mi}{2000}\PY{p}{,} \PY{l+m+mi}{16000}\PY{p}{]}
+     \PY{p}{]}\PY{p}{)}
 
-\PY{n}{obj} \PY{o}{=} \PY{p}{[}\PY{o}{\PYZhy{}}\PY{l+m+mi}{37000}\PY{p}{,} \PY{o}{\PYZhy{}}\PY{l+m+mi}{23000}\PY{p}{,} \PY{o}{\PYZhy{}}\PY{l+m+mi}{20000}\PY{p}{,} \PY{o}{\PYZhy{}}\PY{l+m+mi}{18000}\PY{p}{,} \PY{o}{\PYZhy{}}\PY{l+m+mi}{16000}\PY{p}{,}  \PY{o}{\PYZhy{}}\PY{l+m+mi}{6000}\PY{p}{,}     \PY{c+c1}{\PYZsh{} person 1}
-       \PY{o}{\PYZhy{}}\PY{l+m+mi}{25000}\PY{p}{,} \PY{o}{\PYZhy{}}\PY{l+m+mi}{14000}\PY{p}{,} \PY{o}{\PYZhy{}}\PY{l+m+mi}{14000}\PY{p}{,} \PY{o}{\PYZhy{}}\PY{l+m+mi}{18000}\PY{p}{,} \PY{o}{\PYZhy{}}\PY{l+m+mi}{17000}\PY{p}{,}  \PY{o}{\PYZhy{}}\PY{l+m+mi}{8000}\PY{p}{,}     \PY{c+c1}{\PYZsh{} person 2}
-        \PY{o}{\PYZhy{}}\PY{l+m+mi}{5000}\PY{p}{,} \PY{o}{\PYZhy{}}\PY{l+m+mi}{13000}\PY{p}{,} \PY{o}{\PYZhy{}}\PY{l+m+mi}{10000}\PY{p}{,} \PY{o}{\PYZhy{}}\PY{l+m+mi}{12000}\PY{p}{,}  \PY{o}{\PYZhy{}}\PY{l+m+mi}{5000}\PY{p}{,}  \PY{o}{\PYZhy{}}\PY{l+m+mi}{5000}\PY{p}{,}     \PY{c+c1}{\PYZsh{} person 3}
-       \PY{o}{\PYZhy{}}\PY{l+m+mi}{10000}\PY{p}{,}  \PY{o}{\PYZhy{}}\PY{l+m+mi}{3000}\PY{p}{,} \PY{o}{\PYZhy{}}\PY{l+m+mi}{13000}\PY{p}{,}  \PY{o}{\PYZhy{}}\PY{l+m+mi}{7000}\PY{p}{,}  \PY{o}{\PYZhy{}}\PY{l+m+mi}{2000}\PY{p}{,} \PY{o}{\PYZhy{}}\PY{l+m+mi}{16000}\PY{p}{]}     \PY{c+c1}{\PYZsh{} person 4}
+\PY{n}{dagar} \PY{o}{=} \PY{p}{[}\PY{l+m+mi}{2}\PY{p}{,} \PY{l+m+mi}{3}\PY{p}{,} \PY{l+m+mi}{3}\PY{p}{,} \PY{l+m+mi}{4}\PY{p}{]}
+\PY{n}{tid} \PY{o}{=} \PY{p}{[}\PY{l+m+mi}{4}\PY{p}{,}\PY{l+m+mi}{4}\PY{p}{,}\PY{l+m+mi}{8}\PY{p}{,}\PY{l+m+mi}{8}\PY{p}{]}
 
-\PY{n}{Aub} \PY{o}{=} \PY{p}{[}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}  \PY{l+m+mi}{1}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}  \PY{l+m+mi}{1}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}  \PY{l+m+mi}{1}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{,}    \PY{c+c1}{\PYZsh{} uppgift 1}
-       \PY{p}{[}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{1}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}  \PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{1}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}  \PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{1}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}  \PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{1}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{,}    \PY{c+c1}{\PYZsh{} uppgift 2}
-       \PY{p}{[}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{1}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}  \PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{1}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}  \PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{1}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}  \PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{1}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{,}    \PY{c+c1}{\PYZsh{} uppgift 3}
-       \PY{p}{[}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{1}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}  \PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{1}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}  \PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{1}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}  \PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{1}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{,}    \PY{c+c1}{\PYZsh{} uppgift 4}
-       \PY{p}{[}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{1}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}  \PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{1}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}  \PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{1}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}  \PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{1}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{,}    \PY{c+c1}{\PYZsh{} uppgift 5}
-       \PY{p}{[}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{1}\PY{p}{,}  \PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{1}\PY{p}{,}  \PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{1}\PY{p}{,}  \PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{,}    \PY{c+c1}{\PYZsh{} uppgift 6}
-       \PY{p}{[}\PY{l+m+mi}{2}\PY{p}{,}\PY{l+m+mi}{2}\PY{p}{,}\PY{l+m+mi}{2}\PY{p}{,}\PY{l+m+mi}{2}\PY{p}{,}\PY{l+m+mi}{2}\PY{p}{,}\PY{l+m+mi}{2}\PY{p}{,}  \PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}  \PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}  \PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{,}    \PY{c+c1}{\PYZsh{} tid person 1}
-       \PY{p}{[}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}  \PY{l+m+mi}{3}\PY{p}{,}\PY{l+m+mi}{3}\PY{p}{,}\PY{l+m+mi}{3}\PY{p}{,}\PY{l+m+mi}{3}\PY{p}{,}\PY{l+m+mi}{3}\PY{p}{,}\PY{l+m+mi}{3}\PY{p}{,}  \PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}  \PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{,}    \PY{c+c1}{\PYZsh{} tid person 2}
-       \PY{p}{[}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}  \PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}  \PY{l+m+mi}{3}\PY{p}{,}\PY{l+m+mi}{3}\PY{p}{,}\PY{l+m+mi}{3}\PY{p}{,}\PY{l+m+mi}{3}\PY{p}{,}\PY{l+m+mi}{3}\PY{p}{,}\PY{l+m+mi}{3}\PY{p}{,}  \PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{,}    \PY{c+c1}{\PYZsh{} tid person 3}
-       \PY{p}{[}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}  \PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}  \PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}  \PY{l+m+mi}{4}\PY{p}{,}\PY{l+m+mi}{4}\PY{p}{,}\PY{l+m+mi}{4}\PY{p}{,}\PY{l+m+mi}{4}\PY{p}{,}\PY{l+m+mi}{4}\PY{p}{,}\PY{l+m+mi}{4}\PY{p}{]}\PY{p}{]}    \PY{c+c1}{\PYZsh{} tid person 4}
+\PY{n}{obj} \PY{o}{=} \PY{o}{\PYZhy{}}\PY{n}{V}\PY{o}{.}\PY{n}{flatten}\PY{p}{(}\PY{p}{)}
 
-\PY{n}{Bub} \PY{o}{=} \PY{p}{[}\PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{1}\PY{p}{,}  \PY{l+m+mi}{4}\PY{p}{,} \PY{l+m+mi}{4}\PY{p}{,} \PY{l+m+mi}{8}\PY{p}{,} \PY{l+m+mi}{8}\PY{p}{]}
 
-\PY{n}{bnd} \PY{o}{=} \PY{p}{[}\PY{p}{(}\PY{l+m+mi}{0}\PY{p}{,} \PY{l+m+mi}{1}\PY{p}{)}\PY{p}{]} \PY{o}{*} \PY{l+m+mi}{24}        \PY{c+c1}{\PYZsh{} varje x mellan 0 och 1}
-\PY{n}{heltal} \PY{o}{=} \PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]} \PY{o}{*} \PY{l+m+mi}{24}          \PY{c+c1}{\PYZsh{} och heltal, alltså 0 eller 1}
 
-\PY{n}{resultat} \PY{o}{=} \PY{n}{linprog}\PY{p}{(}\PY{n}{c}\PY{o}{=}\PY{n}{obj}\PY{p}{,} \PY{n}{A\PYZus{}ub}\PY{o}{=}\PY{n}{Aub}\PY{p}{,} \PY{n}{b\PYZus{}ub}\PY{o}{=}\PY{n}{Bub}\PY{p}{,} \PY{n}{bounds}\PY{o}{=}\PY{n}{bnd}\PY{p}{,} \PY{n}{integrality}\PY{o}{=}\PY{n}{heltal}\PY{p}{)}
-\PY{n+nb}{print}\PY{p}{(}\PY{n}{resultat}\PY{p}{)}
+
+\PY{n+nb}{print}\PY{p}{(}\PY{n}{losa}\PY{p}{(}\PY{p}{[}\PY{l+m+mi}{4}\PY{p}{,} \PY{l+m+mi}{4}\PY{p}{,} \PY{l+m+mi}{8}\PY{p}{,} \PY{l+m+mi}{8}\PY{p}{]}\PY{p}{)}\PY{p}{)}   \PY{c+c1}{\PYZsh{} a)}
+\PY{n+nb}{print}\PY{p}{(}\PY{n}{losa}\PY{p}{(}\PY{p}{[}\PY{l+m+mi}{6}\PY{p}{,} \PY{l+m+mi}{4}\PY{p}{,} \PY{l+m+mi}{8}\PY{p}{,} \PY{l+m+mi}{8}\PY{p}{]}\PY{p}{)}\PY{p}{)}   \PY{c+c1}{\PYZsh{} b)}
 \end{Verbatim}
 \end{tcolorbox}
 
-    \begin{Verbatim}[commandchars=\\\{\}]
-        message: Optimization terminated successfully. (HiGHS Status 7: Optimal)
-        success: True
-         status: 0
-            fun: -118000.0
-              x: [ 1.000e+00  1.000e+00 {\ldots}  0.000e+00  1.000e+00]
-            nit: 13
-          lower:  residual: [ 1.000e+00  1.000e+00 {\ldots}  0.000e+00
-                              1.000e+00]
-                 marginals: [ 0.000e+00  0.000e+00 {\ldots}  0.000e+00
-                              0.000e+00]
-          upper:  residual: [ 0.000e+00  0.000e+00 {\ldots}  1.000e+00
-                              0.000e+00]
-                 marginals: [ 0.000e+00  0.000e+00 {\ldots}  0.000e+00
-                              0.000e+00]
-          eqlin:  residual: []
-                 marginals: []
-        ineqlin:  residual: [ 0.000e+00  0.000e+00  0.000e+00  0.000e+00
-                              0.000e+00  0.000e+00  0.000e+00  1.000e+00
-                              5.000e+00  0.000e+00]
-                 marginals: [ 0.000e+00  0.000e+00  0.000e+00  0.000e+00
-                              0.000e+00  0.000e+00  0.000e+00  0.000e+00
-                              0.000e+00  0.000e+00]
- mip\_node\_count: 1
- mip\_dual\_bound: -118000.0
-        mip\_gap: 0.0
-    \end{Verbatim}
+    \begin{Verbatim}[commandchars=\\\{\}, frame=single, framerule=2mm, rulecolor=\color{outerrorbackground}]
+\textcolor{ansi-red}{---------------------------------------------------------------------------}
+\textcolor{ansi-red}{NameError}                                 Traceback (most recent call last)
+\textcolor{ansi-cyan}{Cell}\textcolor{ansi-cyan}{ }\textcolor{ansi-green}{In[967]}\textcolor{ansi-green}{, line 15}
+\textcolor{ansi-green}{     11} 
+\textcolor{ansi-green}{     12} 
+\textcolor{ansi-green}{     13} 
+\textcolor{ansi-green}{     14} 
+\textcolor{ansi-green}{---> }\textcolor{ansi-green}{15} print(losa([\textcolor{ansi-green}{4}, \textcolor{ansi-green}{4}, \textcolor{ansi-green}{8}, \textcolor{ansi-green}{8}]))   \def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{95,135,135}}{\# a)}
+\textcolor{ansi-green}{     16} print(losa([\textcolor{ansi-green}{6}, \textcolor{ansi-green}{4}, \textcolor{ansi-green}{8}, \textcolor{ansi-green}{8}]))   \def\tcRGB{\textcolor[RGB]}\expandafter\tcRGB\expandafter{\detokenize{95,135,135}}{\# b)}
 
-    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
-\prompt{In}{incolor}{6}{\boxspacing}
-\begin{Verbatim}[commandchars=\\\{\}]
-\PY{n}{x\PYZus{}opt} \PY{o}{=} \PY{n}{resultat}\PY{o}{.}\PY{n}{x}
-\PY{n}{Z\PYZus{}opt} \PY{o}{=} \PY{o}{\PYZhy{}}\PY{n}{resultat}\PY{o}{.}\PY{n}{fun}
-
-\PY{n+nb}{print}\PY{p}{(}\PY{l+s+sa}{f}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{vinst }\PY{l+s+si}{\PYZob{}}\PY{n}{Z\PYZus{}opt}\PY{l+s+si}{\PYZcb{}}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
-\PY{n+nb}{print}\PY{p}{(}\PY{n}{np}\PY{o}{.}\PY{n}{round}\PY{p}{(}\PY{n}{x\PYZus{}opt}\PY{p}{)}\PY{o}{.}\PY{n}{astype}\PY{p}{(}\PY{n+nb}{int}\PY{p}{)}\PY{o}{.}\PY{n}{reshape}\PY{p}{(}\PY{l+m+mi}{4}\PY{p}{,} \PY{l+m+mi}{6}\PY{p}{)}\PY{p}{)}     \PY{c+c1}{\PYZsh{} rad = person, kolumn = uppgift}
-\end{Verbatim}
-\end{tcolorbox}
-
-    \begin{Verbatim}[commandchars=\\\{\}]
-vinst 118000.0
-[[1 1 0 0 0 0]
- [0 0 0 0 1 0]
- [0 0 0 1 0 0]
- [0 0 1 0 0 1]]
+\textcolor{ansi-red}{NameError}: name 'losa' is not defined
     \end{Verbatim}
 
     \subsection{2b) Person 1 får 6 dagar}\label{b-person-1-fuxe5r-6-dagar}
 
 Enda ändringen i modellen är högerledet i tidsbivillkoret för person 1.
 Nu hinner person 1 göra 3 uppgifter.
-
-    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
-\prompt{In}{incolor}{7}{\boxspacing}
-\begin{Verbatim}[commandchars=\\\{\}]
-\PY{n}{Bub\PYZus{}ny} \PY{o}{=} \PY{p}{[}\PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{1}\PY{p}{,}  \PY{l+m+mi}{6}\PY{p}{,} \PY{l+m+mi}{4}\PY{p}{,} \PY{l+m+mi}{8}\PY{p}{,} \PY{l+m+mi}{8}\PY{p}{]}
-
-\PY{n}{resultat\PYZus{}ny} \PY{o}{=} \PY{n}{linprog}\PY{p}{(}\PY{n}{c}\PY{o}{=}\PY{n}{obj}\PY{p}{,} \PY{n}{A\PYZus{}ub}\PY{o}{=}\PY{n}{Aub}\PY{p}{,} \PY{n}{b\PYZus{}ub}\PY{o}{=}\PY{n}{Bub\PYZus{}ny}\PY{p}{,} \PY{n}{bounds}\PY{o}{=}\PY{n}{bnd}\PY{p}{,} \PY{n}{integrality}\PY{o}{=}\PY{n}{heltal}\PY{p}{)}
-
-\PY{n}{x\PYZus{}opt\PYZus{}ny} \PY{o}{=} \PY{n}{resultat\PYZus{}ny}\PY{o}{.}\PY{n}{x}
-\PY{n}{Z\PYZus{}opt\PYZus{}ny} \PY{o}{=} \PY{o}{\PYZhy{}}\PY{n}{resultat\PYZus{}ny}\PY{o}{.}\PY{n}{fun}
-
-\PY{n+nb}{print}\PY{p}{(}\PY{l+s+sa}{f}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{vinst }\PY{l+s+si}{\PYZob{}}\PY{n}{Z\PYZus{}opt\PYZus{}ny}\PY{l+s+si}{\PYZcb{}}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
-\PY{n+nb}{print}\PY{p}{(}\PY{n}{np}\PY{o}{.}\PY{n}{round}\PY{p}{(}\PY{n}{x\PYZus{}opt\PYZus{}ny}\PY{p}{)}\PY{o}{.}\PY{n}{astype}\PY{p}{(}\PY{n+nb}{int}\PY{p}{)}\PY{o}{.}\PY{n}{reshape}\PY{p}{(}\PY{l+m+mi}{4}\PY{p}{,} \PY{l+m+mi}{6}\PY{p}{)}\PY{p}{)}
-\end{Verbatim}
-\end{tcolorbox}
-
-    \begin{Verbatim}[commandchars=\\\{\}]
-vinst 125000.0
-[[1 1 1 0 0 0]
- [0 0 0 0 1 0]
- [0 0 0 1 0 0]
- [0 0 0 0 0 1]]
-    \end{Verbatim}
 
     \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
