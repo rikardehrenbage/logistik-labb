@@ -186,11 +186,13 @@
     \renewcommand{\LaTeX}{\textrm{\Oldlatex}}
     % Document parameters
     % Document title
-    \title{logistiklabb}
+    \title{Logistiklabb 2026}
     
     
     
     
+    
+    \author{Rikard Ehrenbåge, David Andersson}
     
     
     
@@ -412,18 +414,40 @@
     
     
 
-    
-    \section{Logistiklabb 2026}\label{logistiklabb-2026}
+    % inställningar som bara gäller PDF-exporten
+\setcounter{secnumdepth}{0}      % inga automatiska rubriknummer
+\providecommand{\thenone}{}\newcounter{none}   % behövs för tabeller från pandoc 3
+    \section{Logistiklabb}\label{logistiklabb}
 
 \textbf{Grupp:} Rikard \& David
 
     \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
-\prompt{In}{incolor}{88}{\boxspacing}
+\prompt{In}{incolor}{1}{\boxspacing}
 \begin{Verbatim}[commandchars=\\\{\}]
 \PY{k+kn}{import}\PY{+w}{ }\PY{n+nn}{numpy}\PY{+w}{ }\PY{k}{as}\PY{+w}{ }\PY{n+nn}{np} 
 \PY{k+kn}{import}\PY{+w}{ }\PY{n+nn}{pandas}\PY{+w}{ }\PY{k}{as}\PY{+w}{ }\PY{n+nn}{pd}
 \PY{k+kn}{import}\PY{+w}{ }\PY{n+nn}{matplotlib}\PY{n+nn}{.}\PY{n+nn}{pyplot}\PY{+w}{ }\PY{k}{as}\PY{+w}{ }\PY{n+nn}{plt}
+\PY{k+kn}{from}\PY{+w}{ }\PY{n+nn}{scipy}\PY{n+nn}{.}\PY{n+nn}{optimize}\PY{+w}{ }\PY{k+kn}{import} \PY{n}{linprog}
 \PY{n}{pd}\PY{o}{.}\PY{n}{set\PYZus{}option}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{display.precision}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{)}
+
+\PY{k+kn}{from}\PY{+w}{ }\PY{n+nn}{IPython}\PY{n+nn}{.}\PY{n+nn}{display}\PY{+w}{ }\PY{k+kn}{import} \PY{n}{Markdown}\PY{p}{,} \PY{n}{display}
+
+\PY{k}{def}\PY{+w}{ }\PY{n+nf}{visa\PYZus{}tabell}\PY{p}{(}\PY{n}{df}\PY{p}{,} \PY{n+nb}{format}\PY{o}{=}\PY{p}{\PYZob{}}\PY{p}{\PYZcb{}}\PY{p}{)}\PY{p}{:}
+    \PY{c+c1}{\PYZsh{} visar en tabell som markdown, så att den blir snygg både i notebooken och i PDF:en}
+    \PY{n}{kolumner} \PY{o}{=} \PY{n+nb}{list}\PY{p}{(}\PY{n}{df}\PY{o}{.}\PY{n}{columns}\PY{p}{)}
+    \PY{n}{rader} \PY{o}{=} \PY{p}{[}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{| }\PY{l+s+s2}{\PYZdq{}} \PY{o}{+} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{ | }\PY{l+s+s2}{\PYZdq{}}\PY{o}{.}\PY{n}{join}\PY{p}{(}\PY{n+nb}{str}\PY{p}{(}\PY{n}{k}\PY{p}{)} \PY{k}{for} \PY{n}{k} \PY{o+ow}{in} \PY{n}{kolumner}\PY{p}{)} \PY{o}{+} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{ |}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{|}\PY{l+s+s2}{\PYZdq{}} \PY{o}{+} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{\PYZhy{}\PYZhy{}\PYZhy{}|}\PY{l+s+s2}{\PYZdq{}} \PY{o}{*} \PY{n+nb}{len}\PY{p}{(}\PY{n}{kolumner}\PY{p}{)}\PY{p}{]}
+    \PY{k}{for} \PY{n}{\PYZus{}}\PY{p}{,} \PY{n}{rad} \PY{o+ow}{in} \PY{n}{df}\PY{o}{.}\PY{n}{iterrows}\PY{p}{(}\PY{p}{)}\PY{p}{:}
+        \PY{n}{celler} \PY{o}{=} \PY{p}{[}\PY{p}{]}
+        \PY{k}{for} \PY{n}{k} \PY{o+ow}{in} \PY{n}{kolumner}\PY{p}{:}
+            \PY{n}{v} \PY{o}{=} \PY{n}{rad}\PY{p}{[}\PY{n}{k}\PY{p}{]}
+            \PY{k}{if} \PY{n}{k} \PY{o+ow}{in} \PY{n+nb}{format}\PY{p}{:}
+                \PY{n}{celler}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{n+nb}{format}\PY{p}{[}\PY{n}{k}\PY{p}{]}\PY{o}{.}\PY{n}{format}\PY{p}{(}\PY{n}{v}\PY{p}{)}\PY{p}{)}
+            \PY{k}{elif} \PY{n+nb}{isinstance}\PY{p}{(}\PY{n}{v}\PY{p}{,} \PY{n+nb}{float}\PY{p}{)}\PY{p}{:}
+                \PY{n}{celler}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{l+s+sa}{f}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+si}{\PYZob{}}\PY{n}{v}\PY{l+s+si}{:}\PY{l+s+s2}{.2f}\PY{l+s+si}{\PYZcb{}}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+            \PY{k}{else}\PY{p}{:}
+                \PY{n}{celler}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{n+nb}{str}\PY{p}{(}\PY{n}{v}\PY{p}{)}\PY{p}{)}
+        \PY{n}{rader}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{| }\PY{l+s+s2}{\PYZdq{}} \PY{o}{+} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{ | }\PY{l+s+s2}{\PYZdq{}}\PY{o}{.}\PY{n}{join}\PY{p}{(}\PY{n}{celler}\PY{p}{)} \PY{o}{+} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{ |}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+    \PY{n}{display}\PY{p}{(}\PY{n}{Markdown}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+se}{\PYZbs{}n}\PY{l+s+s2}{\PYZdq{}}\PY{o}{.}\PY{n}{join}\PY{p}{(}\PY{n}{rader}\PY{p}{)}\PY{p}{)}\PY{p}{)}
 \end{Verbatim}
 \end{tcolorbox}
 
@@ -443,12 +467,34 @@ där \(u(t-1)\) är prognosen för månad \(t\) (gjord månaden innan) och
 \(u(0)=50\) är startskattningen (prognos för januari). Prognosen för
 december är alltså \(u(\text{nov})\).
 
+Därefter beräknades APE (Absolute Percentage Error) för varje månad, som
+visar hur stort felet var mellan det verkliga och prognosiserade värdet.
+
+\[
+\mathrm{APE}(t) = \frac{\left| d(t) - u(t-1) \right|}{d(t)} \cdot 100\,\%
+\]
+
+När felet hade beräknats för varje måndad kunde ett medelvärde (MAPE)
+bestämmas.
+
 Prognosfelet mäts med MAPE över de 11 månader där vi har utfall:
 
 \[\text{MAPE} = \frac{100}{n}\sum_{t=1}^{n}\frac{|d(t)-u(t-1)|}{d(t)}\;\%.\]
 
+Vikten \(a\) bestämmer hur stor betydelse den senaste observationen
+\(d(t)\) har för nästa prognos, medan \((1-a)\) är vikten för den
+tidigare prognosen \(u(t-1)\), som bygger på alla äldre månader. Om
+\(a = 0\) tas ingen hänsyn till förra månadens utfall, och prognosen
+förblir startvärdet, 50. Om \(a = 1\) bygger prognosen enbart på förra
+månadens utfall, så nästa månads prognos blir exakt samma värde som
+föregående månad.
+
+Om \(a = 0\) så kommer MAPE vara 14.0\% men om \(a = 1\) så kommer MAPE
+vara CA 20.0\%. Genom att testa olika \(a\) mellan 0 till 1 så kommer
+MAPE:n variera mellan 14-20 \%.
+
     \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
-\prompt{In}{incolor}{89}{\boxspacing}
+\prompt{In}{incolor}{2}{\boxspacing}
 \begin{Verbatim}[commandchars=\\\{\}]
 \PY{n}{manader} \PY{o}{=} \PY{p}{[}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{jan}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{feb}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{mar}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{apr}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{maj}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{jun}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{jul}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{aug}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{sep}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{okt}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{nov}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{dec}\PY{l+s+s2}{\PYZdq{}}\PY{p}{]}
 \PY{n}{d} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{array}\PY{p}{(}\PY{p}{[}\PY{l+m+mi}{52}\PY{p}{,} \PY{l+m+mi}{51}\PY{p}{,} \PY{l+m+mi}{60}\PY{p}{,} \PY{l+m+mi}{46}\PY{p}{,} \PY{l+m+mi}{70}\PY{p}{,} \PY{l+m+mi}{50}\PY{p}{,} \PY{l+m+mi}{39}\PY{p}{,} \PY{l+m+mi}{48}\PY{p}{,} \PY{l+m+mi}{60}\PY{p}{,} \PY{l+m+mi}{70}\PY{p}{,} \PY{l+m+mi}{60}\PY{p}{]}\PY{p}{,} \PY{n}{dtype}\PY{o}{=}\PY{n+nb}{float}\PY{p}{)}
@@ -471,99 +517,34 @@ Prognosfelet mäts med MAPE över de 11 månader där vi har utfall:
     \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Prognos dec}\PY{l+s+s2}{\PYZdq{}}\PY{p}{:} \PY{p}{[}\PY{n}{utjamning}\PY{p}{(}\PY{n}{a}\PY{p}{)}\PY{p}{[}\PY{o}{\PYZhy{}}\PY{l+m+mi}{1}\PY{p}{]} \PY{k}{for} \PY{n}{a} \PY{o+ow}{in} \PY{n}{alfa}\PY{p}{]}\PY{p}{,}
     \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{MAPE (}\PY{l+s+s2}{\PYZpc{}}\PY{l+s+s2}{)}\PY{l+s+s2}{\PYZdq{}}\PY{p}{:} \PY{p}{[}\PY{n}{mape}\PY{p}{(}\PY{n}{a}\PY{p}{)} \PY{k}{for} \PY{n}{a} \PY{o+ow}{in} \PY{n}{alfa}\PY{p}{]}\PY{p}{,}
 \PY{p}{\PYZcb{}}\PY{p}{)}
-\PY{n}{tabell}
+\PY{n}{visa\PYZus{}tabell}\PY{p}{(}\PY{n}{tabell}\PY{p}{,} \PY{p}{\PYZob{}}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{a}\PY{l+s+s2}{\PYZdq{}}\PY{p}{:} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+si}{\PYZob{}:.1f\PYZcb{}}\PY{l+s+s2}{\PYZdq{}}\PY{p}{\PYZcb{}}\PY{p}{)}
 \end{Verbatim}
 \end{tcolorbox}
 
-            \begin{tcolorbox}[breakable, size=fbox, boxrule=.5pt, pad at break*=1mm, opacityfill=0]
-\prompt{Out}{outcolor}{89}{\boxspacing}
-\begin{Verbatim}[commandchars=\\\{\}]
-      a  Prognos dec  MAPE (\%)
-0   0.0        50.00     14.00
-1   0.1        54.15     14.45
-2   0.2        56.66     14.93
-3   0.3        58.48     15.26
-4   0.4        59.90     15.37
-5   0.5        60.94     16.20
-6   0.6        61.56     17.31
-7   0.7        61.74     18.29
-8   0.8        61.49     19.11
-9   0.9        60.89     19.79
-10  1.0        60.00     20.31
-\end{Verbatim}
-\end{tcolorbox}
-        
-    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
-\prompt{In}{incolor}{90}{\boxspacing}
-\begin{Verbatim}[commandchars=\\\{\}]
-\PY{c+c1}{\PYZsh{} Prognoserna månad för månad för några värden på a}
-\PY{n}{prognoser} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{DataFrame}\PY{p}{(}\PY{p}{\PYZob{}}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{d(t)}\PY{l+s+s2}{\PYZdq{}}\PY{p}{:} \PY{n+nb}{list}\PY{p}{(}\PY{n}{d}\PY{p}{)} \PY{o}{+} \PY{p}{[}\PY{n}{np}\PY{o}{.}\PY{n}{nan}\PY{p}{]}\PY{p}{\PYZcb{}}\PY{p}{,} \PY{n}{index}\PY{o}{=}\PY{n}{manader}\PY{p}{)}
-\PY{k}{for} \PY{n}{a} \PY{o+ow}{in} \PY{p}{[}\PY{l+m+mf}{0.1}\PY{p}{,} \PY{l+m+mf}{0.3}\PY{p}{,} \PY{l+m+mf}{0.5}\PY{p}{,} \PY{l+m+mf}{0.9}\PY{p}{]}\PY{p}{:}
-    \PY{n}{prognoser}\PY{p}{[}\PY{l+s+sa}{f}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{u(t\PYZhy{}1), a=}\PY{l+s+si}{\PYZob{}}\PY{n}{a}\PY{l+s+si}{\PYZcb{}}\PY{l+s+s2}{\PYZdq{}}\PY{p}{]} \PY{o}{=} \PY{n}{utjamning}\PY{p}{(}\PY{n}{a}\PY{p}{)}
-\PY{n}{prognoser}\PY{o}{.}\PY{n}{T}
-\end{Verbatim}
-\end{tcolorbox}
+    {\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}lll@{}}
+\toprule\noalign{}
+a & Prognos dec & MAPE (\%) \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+0.0 & 50.00 & 14.00 \\
+0.1 & 54.15 & 14.45 \\
+0.2 & 56.66 & 14.93 \\
+0.3 & 58.48 & 15.26 \\
+0.4 & 59.90 & 15.37 \\
+0.5 & 60.94 & 16.20 \\
+0.6 & 61.56 & 17.31 \\
+0.7 & 61.74 & 18.29 \\
+0.8 & 61.49 & 19.11 \\
+0.9 & 60.89 & 19.79 \\
+1.0 & 60.00 & 20.31 \\
+\end{longtable}
+}
 
-            \begin{tcolorbox}[breakable, size=fbox, boxrule=.5pt, pad at break*=1mm, opacityfill=0]
-\prompt{Out}{outcolor}{90}{\boxspacing}
-\begin{Verbatim}[commandchars=\\\{\}]
-                jan   feb    mar    apr    maj    jun    jul    aug    sep  \textbackslash{}
-d(t)           52.0  51.0  60.00  46.00  70.00  50.00  39.00  48.00  60.00
-u(t-1), a=0.1  50.0  50.2  50.28  51.25  50.73  52.65  52.39  51.05  50.74
-u(t-1), a=0.3  50.0  50.6  50.72  53.50  51.25  56.88  54.81  50.07  49.45
-u(t-1), a=0.5  50.0  51.0  51.00  55.50  50.75  60.38  55.19  47.09  47.55
-u(t-1), a=0.9  50.0  51.8  51.08  59.11  47.31  67.73  51.77  40.28  47.23
-
-                 okt    nov    dec
-d(t)           70.00  60.00    NaN
-u(t-1), a=0.1  51.67  53.50  54.15
-u(t-1), a=0.3  52.61  57.83  58.48
-u(t-1), a=0.5  53.77  61.89  60.94
-u(t-1), a=0.9  58.72  68.87  60.89
-\end{Verbatim}
-\end{tcolorbox}
-        
-    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
-\prompt{In}{incolor}{91}{\boxspacing}
-\begin{Verbatim}[commandchars=\\\{\}]
-\PY{n}{fin} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{linspace}\PY{p}{(}\PY{l+m+mi}{0}\PY{p}{,} \PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{1001}\PY{p}{)}
-\PY{n}{m} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{array}\PY{p}{(}\PY{p}{[}\PY{n}{mape}\PY{p}{(}\PY{n}{a}\PY{p}{)} \PY{k}{for} \PY{n}{a} \PY{o+ow}{in} \PY{n}{fin}\PY{p}{]}\PY{p}{)}
-\PY{n}{a\PYZus{}best} \PY{o}{=} \PY{n}{fin}\PY{p}{[}\PY{n}{m}\PY{o}{.}\PY{n}{argmin}\PY{p}{(}\PY{p}{)}\PY{p}{]}
-\PY{n+nb}{print}\PY{p}{(}\PY{l+s+sa}{f}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Lägst MAPE = }\PY{l+s+si}{\PYZob{}}\PY{n}{m}\PY{o}{.}\PY{n}{min}\PY{p}{(}\PY{p}{)}\PY{l+s+si}{:}\PY{l+s+s2}{.2f}\PY{l+s+si}{\PYZcb{}}\PY{l+s+s2}{ \PYZpc{} vid a = }\PY{l+s+si}{\PYZob{}}\PY{n}{a\PYZus{}best}\PY{l+s+si}{:}\PY{l+s+s2}{.3f}\PY{l+s+si}{\PYZcb{}}\PY{l+s+s2}{, prognos dec = }\PY{l+s+si}{\PYZob{}}\PY{n}{utjamning}\PY{p}{(}\PY{n}{a\PYZus{}best}\PY{p}{)}\PY{p}{[}\PY{o}{\PYZhy{}}\PY{l+m+mi}{1}\PY{p}{]}\PY{l+s+si}{:}\PY{l+s+s2}{.2f}\PY{l+s+si}{\PYZcb{}}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
-
-\PY{n}{fig}\PY{p}{,} \PY{n}{ax} \PY{o}{=} \PY{n}{plt}\PY{o}{.}\PY{n}{subplots}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{,} \PY{n}{figsize}\PY{o}{=}\PY{p}{(}\PY{l+m+mi}{13}\PY{p}{,} \PY{l+m+mi}{4}\PY{p}{)}\PY{p}{)}
-\PY{n}{ax}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{n}{fin}\PY{p}{,} \PY{n}{m}\PY{p}{)}
-\PY{n}{ax}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{o}{.}\PY{n}{scatter}\PY{p}{(}\PY{p}{[}\PY{n}{a\PYZus{}best}\PY{p}{]}\PY{p}{,} \PY{p}{[}\PY{n}{m}\PY{o}{.}\PY{n}{min}\PY{p}{(}\PY{p}{)}\PY{p}{]}\PY{p}{,} \PY{n}{color}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{red}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{zorder}\PY{o}{=}\PY{l+m+mi}{3}\PY{p}{)}
-\PY{n}{ax}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{o}{.}\PY{n}{set}\PY{p}{(}\PY{n}{xlabel}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{a}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{ylabel}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{MAPE (}\PY{l+s+s2}{\PYZpc{}}\PY{l+s+s2}{)}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{title}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{MAPE som funktion av a}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
-\PY{n}{ax}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{o}{.}\PY{n}{grid}\PY{p}{(}\PY{n}{alpha}\PY{o}{=}\PY{l+m+mf}{.3}\PY{p}{)}
-
-\PY{n}{ax}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{n}{manader}\PY{p}{[}\PY{p}{:}\PY{l+m+mi}{11}\PY{p}{]}\PY{p}{,} \PY{n}{d}\PY{p}{,} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{ko\PYZhy{}}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{label}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Efterfrågan d(t)}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
-\PY{k}{for} \PY{n}{a} \PY{o+ow}{in} \PY{p}{[}\PY{l+m+mf}{0.1}\PY{p}{,} \PY{l+m+mf}{0.5}\PY{p}{,} \PY{l+m+mf}{0.9}\PY{p}{]}\PY{p}{:}
-    \PY{n}{ax}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{n}{manader}\PY{p}{,} \PY{n}{utjamning}\PY{p}{(}\PY{n}{a}\PY{p}{)}\PY{p}{,} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{\PYZhy{}\PYZhy{}}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{label}\PY{o}{=}\PY{l+s+sa}{f}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Prognos a=}\PY{l+s+si}{\PYZob{}}\PY{n}{a}\PY{l+s+si}{\PYZcb{}}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
-\PY{n}{ax}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}\PY{o}{.}\PY{n}{set}\PY{p}{(}\PY{n}{title}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Efterfrågan och prognoser}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{n}{ylabel}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{enheter}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
-\PY{n}{ax}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}\PY{o}{.}\PY{n}{legend}\PY{p}{(}\PY{p}{)}\PY{p}{;} \PY{n}{ax}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}\PY{o}{.}\PY{n}{grid}\PY{p}{(}\PY{n}{alpha}\PY{o}{=}\PY{l+m+mf}{.3}\PY{p}{)}
-\PY{n}{plt}\PY{o}{.}\PY{n}{tight\PYZus{}layout}\PY{p}{(}\PY{p}{)}\PY{p}{;} \PY{n}{plt}\PY{o}{.}\PY{n}{show}\PY{p}{(}\PY{p}{)}
-\end{Verbatim}
-\end{tcolorbox}
-
-    \begin{Verbatim}[commandchars=\\\{\}]
-Lägst MAPE = 14.00 \% vid a = 0.000, prognos dec = 50.00
-    \end{Verbatim}
-
-    \begin{center}
-    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{logistiklabb_files/logistiklabb_5_1.png}
-    \end{center}
-    { \hspace*{\fill} \\}
     
-    \textbf{Analys (att fylla i / diskutera):} - \emph{Litet a} → prognosen
-lägger lite vikt vid senaste utfallet och mycket vid historiken: jämn,
-trög prognos som filtrerar bort slumpvariation. \(a=0\) ger alltid 50. -
-\emph{Stort a} → prognosen följer senaste utfallet nära: snabb reaktion
-på förändringar men också på brus. \(a=1\) ger ``naiv prognos''
-\(u(t)=d(t)\). - Efterfrågan här svänger kraftigt utan tydlig trend, så
-\ldots{} \emph{(kommentera vilket a som gav lägst MAPE och varför)}.
-
-\subsubsection{Härledning av den rekursiva
+    \subsubsection{Härledning av den rekursiva
 formeln}\label{huxe4rledning-av-den-rekursiva-formeln}
 
 Utgå från den viktade summan av hela tidsserien där vikterna avtar
@@ -611,18 +592,21 @@ Analysen är gjord i Excel och arbetsgången är följande:
 {\def\LTcaptype{none} % do not increment counter
 \begin{longtable}[]{@{}lll@{}}
 \toprule\noalign{}
-Kolumn & Innehåll & Formel (rad 3 som exempel) \\
+Kolumn & Innehåll & Formel (rad 3) \\
 \midrule\noalign{}
 \endhead
 \bottomrule\noalign{}
 \endlastfoot
-D & Lagervärde & \texttt{=B3*C3} (antal × medelkostnad) \\
-E & Kumulativt lagervärde & \texttt{=E2+D3} (i E2: \texttt{=D2}) \\
-F & Kumulativ andel & \texttt{=E3/E26} (E26 = totalt lagervärde) \\
+D & Lagervärde & \texttt{=B3*C3} \\
+E & Kumulativt lagervärde & \texttt{=E2+D3} \\
+F & Kumulativ andel & \texttt{=E3/E26} \\
 G & ABC-klass &
-\texttt{=OM(F3\textless{}=0,8;\ "A";\ OM(F3\textless{}=0,95;\ "B";\ "C"))} \\
+\texttt{=OM(F3\textless{}=0,8;"A";OM(F3\textless{}=0,95;"B";"C"))} \\
 \end{longtable}
 }
+
+Lagervärdet är antal \(\times\) medelkostnad. I E2 står \texttt{=D2},
+och E26 är det totala lagervärdet.
 
 En vara klassas som A om kumulativa andelen är mindre än 80 \%, B om den
 är mindre än 95\% och annars som C.
@@ -630,7 +614,7 @@ En vara klassas som A om kumulativa andelen är mindre än 80 \%, B om den
 Nedan läses Excels resultat in och formlerna hämtas direkt ur filen.
 
     \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
-\prompt{In}{incolor}{92}{\boxspacing}
+\prompt{In}{incolor}{3}{\boxspacing}
 \begin{Verbatim}[commandchars=\\\{\}]
 \PY{k+kn}{import}\PY{+w}{ }\PY{n+nn}{openpyxl}
 
@@ -644,7 +628,7 @@ Nedan läses Excels resultat in och formlerna hämtas direkt ur filen.
 \PY{k}{for} \PY{n}{kol} \PY{o+ow}{in} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{DEFG}\PY{l+s+s2}{\PYZdq{}}\PY{p}{:}
     \PY{n+nb}{print}\PY{p}{(}\PY{l+s+sa}{f}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+si}{\PYZob{}}\PY{n}{kol}\PY{l+s+si}{\PYZcb{}}\PY{l+s+s2}{3: }\PY{l+s+si}{\PYZob{}}\PY{n}{ws}\PY{p}{[}\PY{l+s+sa}{f}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+si}{\PYZob{}}\PY{n}{kol}\PY{l+s+si}{\PYZcb{}}\PY{l+s+s1}{3}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{.}\PY{n}{value}\PY{l+s+si}{\PYZcb{}}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
 
-\PY{n}{abc}\PY{o}{.}\PY{n}{style}\PY{o}{.}\PY{n}{format}\PY{p}{(}\PY{p}{\PYZob{}}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{lagervärde}\PY{l+s+s2}{\PYZdq{}}\PY{p}{:} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+si}{\PYZob{}:,.0f\PYZcb{}}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{kumulativt}\PY{l+s+s2}{\PYZdq{}}\PY{p}{:} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+si}{\PYZob{}:,.0f\PYZcb{}}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{kumulativ}\PY{l+s+s2}{\PYZdq{}}\PY{p}{:} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+si}{\PYZob{}:.2\PYZpc{}\PYZcb{}}\PY{l+s+s2}{\PYZdq{}}\PY{p}{\PYZcb{}}\PY{p}{)}
+\PY{n}{visa\PYZus{}tabell}\PY{p}{(}\PY{n}{abc}\PY{p}{,} \PY{p}{\PYZob{}}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{lagervärde}\PY{l+s+s2}{\PYZdq{}}\PY{p}{:} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+si}{\PYZob{}:,.0f\PYZcb{}}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{kumulativt}\PY{l+s+s2}{\PYZdq{}}\PY{p}{:} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+si}{\PYZob{}:,.0f\PYZcb{}}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{kumulativ}\PY{l+s+s2}{\PYZdq{}}\PY{p}{:} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+si}{\PYZob{}:.2\PYZpc{}\PYZcb{}}\PY{l+s+s2}{\PYZdq{}}\PY{p}{\PYZcb{}}\PY{p}{)}
 \end{Verbatim}
 \end{tcolorbox}
 
@@ -655,15 +639,66 @@ F3: =E3/\$E\$26
 G3: =IF(F3<=0.8,"A",IF(F3<=0.95,"B","C"))
     \end{Verbatim}
 
-            \begin{tcolorbox}[breakable, size=fbox, boxrule=.5pt, pad at break*=1mm, opacityfill=0]
-\prompt{Out}{outcolor}{92}{\boxspacing}
-\begin{Verbatim}[commandchars=\\\{\}]
-<pandas.io.formats.style.Styler at 0x1bf720307d0>
-\end{Verbatim}
-\end{tcolorbox}
-        
+    {\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1429}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1429}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1429}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1429}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1429}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1429}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1429}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+vara
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+antal
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+medelkostnad
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+lagervärde
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+kumulativt
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+kumulativ
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+klass
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+15 & 84000 & 30 & 2,520,000 & 2,520,000 & 39.91\% & A \\
+19 & 21770 & 35 & 761,950 & 3,281,950 & 51.98\% & A \\
+13 & 1306 & 500 & 653,000 & 3,934,950 & 62.32\% & A \\
+3 & 70000 & 5 & 350,000 & 4,284,950 & 67.87\% & A \\
+10 & 19593 & 13 & 254,709 & 4,539,659 & 71.90\% & A \\
+1 & 700 & 342 & 239,400 & 4,779,059 & 75.69\% & A \\
+9 & 10500 & 21 & 220,500 & 4,999,559 & 79.18\% & A \\
+4 & 68000 & 3 & 204,000 & 5,203,559 & 82.42\% & B \\
+12 & 19593 & 10 & 195,930 & 5,399,489 & 85.52\% & B \\
+2 & 800 & 200 & 160,000 & 5,559,489 & 88.05\% & B \\
+20 & 4200 & 34 & 142,800 & 5,702,289 & 90.31\% & B \\
+5 & 8638 & 14 & 120,932 & 5,823,221 & 92.23\% & B \\
+6 & 5355 & 18 & 96,390 & 5,919,611 & 93.76\% & B \\
+21 & 3200 & 24 & 76,800 & 5,996,411 & 94.97\% & B \\
+8 & 1306 & 58 & 75,748 & 6,072,159 & 96.17\% & C \\
+14 & 2800 & 19 & 53,200 & 6,125,359 & 97.01\% & C \\
+11 & 1400 & 34 & 47,600 & 6,172,959 & 97.77\% & C \\
+23 & 310 & 98 & 30,380 & 6,203,339 & 98.25\% & C \\
+18 & 861 & 27 & 23,247 & 6,226,586 & 98.62\% & C \\
+22 & 230 & 100 & 23,000 & 6,249,586 & 98.98\% & C \\
+7 & 10500 & 2 & 21,000 & 6,270,586 & 99.32\% & C \\
+25 & 1200 & 13 & 15,600 & 6,286,186 & 99.56\% & C \\
+17 & 840 & 16 & 13,440 & 6,299,626 & 99.78\% & C \\
+24 & 1000 & 12 & 12,000 & 6,311,626 & 99.97\% & C \\
+16 & 315 & 7 & 2,205 & 6,313,831 & 100.00\% & C \\
+\end{longtable}
+}
+
+    
     \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
-\prompt{In}{incolor}{93}{\boxspacing}
+\prompt{In}{incolor}{4}{\boxspacing}
 \begin{Verbatim}[commandchars=\\\{\}]
 \PY{n}{sammanfattning} \PY{o}{=} \PY{n}{abc}\PY{o}{.}\PY{n}{groupby}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{klass}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}\PY{o}{.}\PY{n}{agg}\PY{p}{(}
     \PY{n}{antal\PYZus{}artiklar}\PY{o}{=}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{vara}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{count}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}\PY{p}{,}
@@ -671,79 +706,596 @@ G3: =IF(F3<=0.8,"A",IF(F3<=0.95,"B","C"))
 \PY{p}{)}
 \PY{n}{sammanfattning}\PY{p}{[}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{andel artiklar (}\PY{l+s+s2}{\PYZpc{}}\PY{l+s+s2}{)}\PY{l+s+s2}{\PYZdq{}}\PY{p}{]} \PY{o}{=} \PY{l+m+mi}{100} \PY{o}{*} \PY{n}{sammanfattning}\PY{p}{[}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{antal\PYZus{}artiklar}\PY{l+s+s2}{\PYZdq{}}\PY{p}{]} \PY{o}{/} \PY{n+nb}{len}\PY{p}{(}\PY{n}{abc}\PY{p}{)}
 \PY{n}{sammanfattning}\PY{p}{[}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{andel lagervärde (}\PY{l+s+s2}{\PYZpc{}}\PY{l+s+s2}{)}\PY{l+s+s2}{\PYZdq{}}\PY{p}{]} \PY{o}{=} \PY{l+m+mi}{100} \PY{o}{*} \PY{n}{sammanfattning}\PY{p}{[}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{lagervärde}\PY{l+s+s2}{\PYZdq{}}\PY{p}{]} \PY{o}{/} \PY{n}{abc}\PY{p}{[}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{lagervärde}\PY{l+s+s2}{\PYZdq{}}\PY{p}{]}\PY{o}{.}\PY{n}{sum}\PY{p}{(}\PY{p}{)}
-\PY{n}{sammanfattning}
+\PY{n}{visa\PYZus{}tabell}\PY{p}{(}\PY{n}{sammanfattning}\PY{o}{.}\PY{n}{reset\PYZus{}index}\PY{p}{(}\PY{p}{)}\PY{p}{,} \PY{p}{\PYZob{}}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{lagervärde}\PY{l+s+s2}{\PYZdq{}}\PY{p}{:} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+si}{\PYZob{}:,.0f\PYZcb{}}\PY{l+s+s2}{\PYZdq{}}\PY{p}{\PYZcb{}}\PY{p}{)}
 \end{Verbatim}
 \end{tcolorbox}
 
-            \begin{tcolorbox}[breakable, size=fbox, boxrule=.5pt, pad at break*=1mm, opacityfill=0]
-\prompt{Out}{outcolor}{93}{\boxspacing}
-\begin{Verbatim}[commandchars=\\\{\}]
-       antal\_artiklar  lagervärde  andel artiklar (\%)  andel lagervärde (\%)
+    {\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2000}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2000}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2000}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2000}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2000}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
 klass
-A                   7     4999559                28.0                 79.18
-B                   7      996852                28.0                 15.79
-C                  11      317420                44.0                  5.03
-\end{Verbatim}
-\end{tcolorbox}
-        
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+antal\_artiklar
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+lagervärde
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+andel artiklar (\%)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+andel lagervärde (\%)
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+A & 7 & 4,999,559 & 28.00 & 79.18 \\
+B & 7 & 996,852 & 28.00 & 15.79 \\
+C & 11 & 317,420 & 44.00 & 5.03 \\
+\end{longtable}
+}
+
+    
     Det blev 7 A-artiklar som står för ca 79\% av hela lagervärdet. Vilket
 kommer att innebära tät uppföljning, noggranna prognoser och
 beställningar för just dessa varor. B och speciellt C-artiklar klarar
 sig med enkla regler, större partier och mindre kontroll.
 
-    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
-\prompt{In}{incolor}{ }{\boxspacing}
-\begin{Verbatim}[commandchars=\\\{\}]
-
-\end{Verbatim}
-\end{tcolorbox}
-
-    Här ser vi det illustrerat hur bara 7 varor står för nästan 80 \% av
-lagervärdet.
+    Här i figur 1 ser vi det illustrerat hur bara 7 varor står för nästan 80
+\% av lagervärdet.
 
     \begin{figure}
 \centering
-\pandocbounded{\includegraphics[keepaspectratio,alt={image.png}]{logistiklabb_files/image.png}}
-\caption{image.png}
+\pandocbounded{\includegraphics[keepaspectratio,alt={bild01.png}]{logistiklabb_files/bild01.png}}
+\caption{bild01.png}
 \end{figure}
 
 \emph{Figur 1. Paretodiagram över ABC-analysen, gjort i Excel.}
 
     \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
-\section{2. Heltalsprogrammering (tilldelning av
-arbetsuppgifter)}\label{heltalsprogrammering-tilldelning-av-arbetsuppgifter}
+\section{2. Heltalsprogrammering}\label{heltalsprogrammering}
 
-\subsubsection{2a) Modell och lösning}\label{a-modell-och-luxf6sning}
+Fyra personer kan utföra sex arbetsuppgifter. Person \(i\) som gör
+uppgift \(j\) ger vinsten \(V_{ij}\). Varje uppgift får göras av högst
+en person. Varje person har ett begränsat antal dagar, och alla
+uppgifter tar lika lång tid för en och samma person.
 
-\emph{TODO: mängder, parametrar, binära variabler \(x_{ij}\),
-målfunktion och bivillkor.}
+\subsection{2a) Generell matematisk
+modell}\label{a-generell-matematisk-modell}
 
-\subsubsection{2b) Person 1 har 6 dagar}\label{b-person-1-har-6-dagar}
+\textbf{Mängder}
 
-\emph{TODO}
+\begin{itemize}
+\tightlist
+\item
+  \(I = \{1,2,3,4\}\): personer
+\item
+  \(J = \{1,2,3,4,5,6\}\): arbetsuppgifter
+\end{itemize}
+
+\textbf{Parametrar}
+
+\begin{itemize}
+\tightlist
+\item
+  \(V_{ij}\): vinst om person \(i\) utför uppgift \(j\) (kr)
+\item
+  \(t_i\): antal dagar det tar för person \(i\) att utföra en uppgift,
+  \(t = (2, 3, 3, 4)\)
+\item
+  \(T_i\): antal tillgängliga dagar för person \(i\),
+  \(T = (4, 4, 8, 8)\)
+\end{itemize}
+
+\textbf{Beslutsvariabler}
+
+\[x_{ij} = \begin{cases} 1 & \text{om person } i \text{ utför uppgift } j \\ 0 & \text{annars} \end{cases}\]
+
+\textbf{Modell}
+
+\[\max\; Z = \sum_{i \in I}\sum_{j \in J} V_{ij}\,x_{ij}\]
+
+då
+
+\[\sum_{i \in I} x_{ij} \le 1 \qquad \forall j \in J \qquad \text{(varje uppgift görs av högst en person)}\]
+
+\[\sum_{j \in J} t_i\,x_{ij} \le T_i \qquad \forall i \in I \qquad \text{(personens tillgängliga tid)}\]
+
+\[x_{ij} \in \{0,1\} \qquad \forall i \in I,\ j \in J\]
+
+Det är ett generaliserat tilldelningsproblem, en person kan få flera
+uppgifter, så länge tiden räcker. Det är ett binärt heltalsproblem
+(BIP).
+
+    \subsubsection{Lösning}\label{luxf6sning}
+
+Modellen löses här i Python med \texttt{linprog}, på samma sätt som i
+labb 4. Variablerna ligger i ordningen
+\(x_{11}, \dots, x_{16}, x_{21}, \dots, x_{46}\) (person för person).
+Vinsterna läggs i \texttt{obj} med minustecken eftersom \texttt{linprog}
+minimerar, och varje bivillkor blir en rad i \texttt{Aub} och ett tal i
+\texttt{Bub}.
+
+    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+\prompt{In}{incolor}{5}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{c+c1}{\PYZsh{} x11 ... x16 (person 1), x21 ... x26 (person 2), x31 ... x36 (person 3), x41 ... x46 (person 4)}
+
+\PY{n}{obj} \PY{o}{=} \PY{p}{[}\PY{o}{\PYZhy{}}\PY{l+m+mi}{37000}\PY{p}{,} \PY{o}{\PYZhy{}}\PY{l+m+mi}{23000}\PY{p}{,} \PY{o}{\PYZhy{}}\PY{l+m+mi}{20000}\PY{p}{,} \PY{o}{\PYZhy{}}\PY{l+m+mi}{18000}\PY{p}{,} \PY{o}{\PYZhy{}}\PY{l+m+mi}{16000}\PY{p}{,}  \PY{o}{\PYZhy{}}\PY{l+m+mi}{6000}\PY{p}{,}     \PY{c+c1}{\PYZsh{} person 1}
+       \PY{o}{\PYZhy{}}\PY{l+m+mi}{25000}\PY{p}{,} \PY{o}{\PYZhy{}}\PY{l+m+mi}{14000}\PY{p}{,} \PY{o}{\PYZhy{}}\PY{l+m+mi}{14000}\PY{p}{,} \PY{o}{\PYZhy{}}\PY{l+m+mi}{18000}\PY{p}{,} \PY{o}{\PYZhy{}}\PY{l+m+mi}{17000}\PY{p}{,}  \PY{o}{\PYZhy{}}\PY{l+m+mi}{8000}\PY{p}{,}     \PY{c+c1}{\PYZsh{} person 2}
+        \PY{o}{\PYZhy{}}\PY{l+m+mi}{5000}\PY{p}{,} \PY{o}{\PYZhy{}}\PY{l+m+mi}{13000}\PY{p}{,} \PY{o}{\PYZhy{}}\PY{l+m+mi}{10000}\PY{p}{,} \PY{o}{\PYZhy{}}\PY{l+m+mi}{12000}\PY{p}{,}  \PY{o}{\PYZhy{}}\PY{l+m+mi}{5000}\PY{p}{,}  \PY{o}{\PYZhy{}}\PY{l+m+mi}{5000}\PY{p}{,}     \PY{c+c1}{\PYZsh{} person 3}
+       \PY{o}{\PYZhy{}}\PY{l+m+mi}{10000}\PY{p}{,}  \PY{o}{\PYZhy{}}\PY{l+m+mi}{3000}\PY{p}{,} \PY{o}{\PYZhy{}}\PY{l+m+mi}{13000}\PY{p}{,}  \PY{o}{\PYZhy{}}\PY{l+m+mi}{7000}\PY{p}{,}  \PY{o}{\PYZhy{}}\PY{l+m+mi}{2000}\PY{p}{,} \PY{o}{\PYZhy{}}\PY{l+m+mi}{16000}\PY{p}{]}     \PY{c+c1}{\PYZsh{} person 4}
+
+\PY{n}{Aub} \PY{o}{=} \PY{p}{[}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}  \PY{l+m+mi}{1}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}  \PY{l+m+mi}{1}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}  \PY{l+m+mi}{1}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{,}    \PY{c+c1}{\PYZsh{} uppgift 1}
+       \PY{p}{[}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{1}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}  \PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{1}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}  \PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{1}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}  \PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{1}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{,}    \PY{c+c1}{\PYZsh{} uppgift 2}
+       \PY{p}{[}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{1}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}  \PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{1}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}  \PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{1}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}  \PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{1}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{,}    \PY{c+c1}{\PYZsh{} uppgift 3}
+       \PY{p}{[}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{1}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}  \PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{1}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}  \PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{1}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}  \PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{1}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{,}    \PY{c+c1}{\PYZsh{} uppgift 4}
+       \PY{p}{[}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{1}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}  \PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{1}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}  \PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{1}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}  \PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{1}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{,}    \PY{c+c1}{\PYZsh{} uppgift 5}
+       \PY{p}{[}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{1}\PY{p}{,}  \PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{1}\PY{p}{,}  \PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{1}\PY{p}{,}  \PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{,}    \PY{c+c1}{\PYZsh{} uppgift 6}
+       \PY{p}{[}\PY{l+m+mi}{2}\PY{p}{,}\PY{l+m+mi}{2}\PY{p}{,}\PY{l+m+mi}{2}\PY{p}{,}\PY{l+m+mi}{2}\PY{p}{,}\PY{l+m+mi}{2}\PY{p}{,}\PY{l+m+mi}{2}\PY{p}{,}  \PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}  \PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}  \PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{,}    \PY{c+c1}{\PYZsh{} tid person 1}
+       \PY{p}{[}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}  \PY{l+m+mi}{3}\PY{p}{,}\PY{l+m+mi}{3}\PY{p}{,}\PY{l+m+mi}{3}\PY{p}{,}\PY{l+m+mi}{3}\PY{p}{,}\PY{l+m+mi}{3}\PY{p}{,}\PY{l+m+mi}{3}\PY{p}{,}  \PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}  \PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{,}    \PY{c+c1}{\PYZsh{} tid person 2}
+       \PY{p}{[}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}  \PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}  \PY{l+m+mi}{3}\PY{p}{,}\PY{l+m+mi}{3}\PY{p}{,}\PY{l+m+mi}{3}\PY{p}{,}\PY{l+m+mi}{3}\PY{p}{,}\PY{l+m+mi}{3}\PY{p}{,}\PY{l+m+mi}{3}\PY{p}{,}  \PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{,}    \PY{c+c1}{\PYZsh{} tid person 3}
+       \PY{p}{[}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}  \PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}  \PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{0}\PY{p}{,}  \PY{l+m+mi}{4}\PY{p}{,}\PY{l+m+mi}{4}\PY{p}{,}\PY{l+m+mi}{4}\PY{p}{,}\PY{l+m+mi}{4}\PY{p}{,}\PY{l+m+mi}{4}\PY{p}{,}\PY{l+m+mi}{4}\PY{p}{]}\PY{p}{]}    \PY{c+c1}{\PYZsh{} tid person 4}
+
+\PY{n}{Bub} \PY{o}{=} \PY{p}{[}\PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{1}\PY{p}{,}  \PY{l+m+mi}{4}\PY{p}{,} \PY{l+m+mi}{4}\PY{p}{,} \PY{l+m+mi}{8}\PY{p}{,} \PY{l+m+mi}{8}\PY{p}{]}
+
+\PY{n}{bnd} \PY{o}{=} \PY{p}{[}\PY{p}{(}\PY{l+m+mi}{0}\PY{p}{,} \PY{l+m+mi}{1}\PY{p}{)}\PY{p}{]} \PY{o}{*} \PY{l+m+mi}{24}        \PY{c+c1}{\PYZsh{} varje x mellan 0 och 1}
+\PY{n}{heltal} \PY{o}{=} \PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]} \PY{o}{*} \PY{l+m+mi}{24}          \PY{c+c1}{\PYZsh{} och heltal, alltså 0 eller 1}
+
+\PY{n}{resultat} \PY{o}{=} \PY{n}{linprog}\PY{p}{(}\PY{n}{c}\PY{o}{=}\PY{n}{obj}\PY{p}{,} \PY{n}{A\PYZus{}ub}\PY{o}{=}\PY{n}{Aub}\PY{p}{,} \PY{n}{b\PYZus{}ub}\PY{o}{=}\PY{n}{Bub}\PY{p}{,} \PY{n}{bounds}\PY{o}{=}\PY{n}{bnd}\PY{p}{,} \PY{n}{integrality}\PY{o}{=}\PY{n}{heltal}\PY{p}{)}
+\PY{n+nb}{print}\PY{p}{(}\PY{n}{resultat}\PY{p}{)}
+\end{Verbatim}
+\end{tcolorbox}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+        message: Optimization terminated successfully. (HiGHS Status 7: Optimal)
+        success: True
+         status: 0
+            fun: -118000.0
+              x: [ 1.000e+00  1.000e+00 {\ldots}  0.000e+00  1.000e+00]
+            nit: 13
+          lower:  residual: [ 1.000e+00  1.000e+00 {\ldots}  0.000e+00
+                              1.000e+00]
+                 marginals: [ 0.000e+00  0.000e+00 {\ldots}  0.000e+00
+                              0.000e+00]
+          upper:  residual: [ 0.000e+00  0.000e+00 {\ldots}  1.000e+00
+                              0.000e+00]
+                 marginals: [ 0.000e+00  0.000e+00 {\ldots}  0.000e+00
+                              0.000e+00]
+          eqlin:  residual: []
+                 marginals: []
+        ineqlin:  residual: [ 0.000e+00  0.000e+00  0.000e+00  0.000e+00
+                              0.000e+00  0.000e+00  0.000e+00  1.000e+00
+                              5.000e+00  0.000e+00]
+                 marginals: [ 0.000e+00  0.000e+00  0.000e+00  0.000e+00
+                              0.000e+00  0.000e+00  0.000e+00  0.000e+00
+                              0.000e+00  0.000e+00]
+ mip\_node\_count: 1
+ mip\_dual\_bound: -118000.0
+        mip\_gap: 0.0
+    \end{Verbatim}
+
+    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+\prompt{In}{incolor}{6}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{n}{x\PYZus{}opt} \PY{o}{=} \PY{n}{resultat}\PY{o}{.}\PY{n}{x}
+\PY{n}{Z\PYZus{}opt} \PY{o}{=} \PY{o}{\PYZhy{}}\PY{n}{resultat}\PY{o}{.}\PY{n}{fun}
+
+\PY{n+nb}{print}\PY{p}{(}\PY{l+s+sa}{f}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{vinst }\PY{l+s+si}{\PYZob{}}\PY{n}{Z\PYZus{}opt}\PY{l+s+si}{\PYZcb{}}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+\PY{n+nb}{print}\PY{p}{(}\PY{n}{np}\PY{o}{.}\PY{n}{round}\PY{p}{(}\PY{n}{x\PYZus{}opt}\PY{p}{)}\PY{o}{.}\PY{n}{astype}\PY{p}{(}\PY{n+nb}{int}\PY{p}{)}\PY{o}{.}\PY{n}{reshape}\PY{p}{(}\PY{l+m+mi}{4}\PY{p}{,} \PY{l+m+mi}{6}\PY{p}{)}\PY{p}{)}     \PY{c+c1}{\PYZsh{} rad = person, kolumn = uppgift}
+\end{Verbatim}
+\end{tcolorbox}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+vinst 118000.0
+[[1 1 0 0 0 0]
+ [0 0 0 0 1 0]
+ [0 0 0 1 0 0]
+ [0 0 1 0 0 1]]
+    \end{Verbatim}
+
+    \subsection{2b) Person 1 får 6 dagar}\label{b-person-1-fuxe5r-6-dagar}
+
+Enda ändringen i modellen är högerledet i tidsbivillkoret för person 1.
+Nu hinner person 1 göra 3 uppgifter.
+
+    \begin{tcolorbox}[breakable, size=fbox, boxrule=1pt, pad at break*=1mm,colback=cellbackground, colframe=cellborder]
+\prompt{In}{incolor}{7}{\boxspacing}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{n}{Bub\PYZus{}ny} \PY{o}{=} \PY{p}{[}\PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{1}\PY{p}{,}  \PY{l+m+mi}{6}\PY{p}{,} \PY{l+m+mi}{4}\PY{p}{,} \PY{l+m+mi}{8}\PY{p}{,} \PY{l+m+mi}{8}\PY{p}{]}
+
+\PY{n}{resultat\PYZus{}ny} \PY{o}{=} \PY{n}{linprog}\PY{p}{(}\PY{n}{c}\PY{o}{=}\PY{n}{obj}\PY{p}{,} \PY{n}{A\PYZus{}ub}\PY{o}{=}\PY{n}{Aub}\PY{p}{,} \PY{n}{b\PYZus{}ub}\PY{o}{=}\PY{n}{Bub\PYZus{}ny}\PY{p}{,} \PY{n}{bounds}\PY{o}{=}\PY{n}{bnd}\PY{p}{,} \PY{n}{integrality}\PY{o}{=}\PY{n}{heltal}\PY{p}{)}
+
+\PY{n}{x\PYZus{}opt\PYZus{}ny} \PY{o}{=} \PY{n}{resultat\PYZus{}ny}\PY{o}{.}\PY{n}{x}
+\PY{n}{Z\PYZus{}opt\PYZus{}ny} \PY{o}{=} \PY{o}{\PYZhy{}}\PY{n}{resultat\PYZus{}ny}\PY{o}{.}\PY{n}{fun}
+
+\PY{n+nb}{print}\PY{p}{(}\PY{l+s+sa}{f}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{vinst }\PY{l+s+si}{\PYZob{}}\PY{n}{Z\PYZus{}opt\PYZus{}ny}\PY{l+s+si}{\PYZcb{}}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+\PY{n+nb}{print}\PY{p}{(}\PY{n}{np}\PY{o}{.}\PY{n}{round}\PY{p}{(}\PY{n}{x\PYZus{}opt\PYZus{}ny}\PY{p}{)}\PY{o}{.}\PY{n}{astype}\PY{p}{(}\PY{n+nb}{int}\PY{p}{)}\PY{o}{.}\PY{n}{reshape}\PY{p}{(}\PY{l+m+mi}{4}\PY{p}{,} \PY{l+m+mi}{6}\PY{p}{)}\PY{p}{)}
+\end{Verbatim}
+\end{tcolorbox}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+vinst 125000.0
+[[1 1 1 0 0 0]
+ [0 0 0 0 1 0]
+ [0 0 0 1 0 0]
+ [0 0 0 0 0 1]]
+    \end{Verbatim}
 
     \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
 \section{3. Omlastningsmodell: probabilistiska bivillkor och
 heltal}\label{omlastningsmodell-probabilistiska-bivillkor-och-heltal}
 
+Fyra bruk (A, B, C, D) skickar varor via två omlastningsnoder (E, F)
+till tre kunder (G, H, I). Bruken kan leverera högst 400, 350, 300 och
+450 enheter. Kundernas efterfrågan är osäker och normalfördelad:
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}lll@{}}
+\toprule\noalign{}
+Kund & Medelvärde & Standardavvikelse \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+G & 560 & 40 \\
+H & 200 & 20 \\
+I & 400 & 30 \\
+\end{longtable}
+}
+
+Transportkostnad (kr/enhet):
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}lll@{}}
+\toprule\noalign{}
+Från/till & E & F \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+A & 4 & 6 \\
+B & 5 & 7 \\
+C & 8 & 6 \\
+D & 4 & 4 \\
+\end{longtable}
+}
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}llll@{}}
+\toprule\noalign{}
+Från/till & G & H & I \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+E & 2 & 3 & 1 \\
+F & 2 & 2 & 4 \\
+\end{longtable}
+}
+
 \subsubsection{3a) Nätverk och
 definitioner}\label{a-nuxe4tverk-och-definitioner}
 
+    \begin{figure}
+\centering
+\pandocbounded{\includegraphics[keepaspectratio,alt={bild02.png}]{logistiklabb_files/bild02.png}}
+\caption{bild02.png}
+\end{figure}
+
+    \textbf{Mängder:}
+
+\begin{itemize}
+\tightlist
+\item
+  Bruk (supplynoder): \(S = \{A, B, C, D\}\)
+\item
+  Omlastningsnoder: \(T = \{E, F\}\)
+\item
+  Kunder (demandnoder): \(K = \{G, H, I\}\)
+\end{itemize}
+
+\textbf{Parametrar:}
+
+\begin{itemize}
+\tightlist
+\item
+  \(s_i\) = maximalt utbud i bruk i: \(s = (400, 350, 300, 450)\)
+\item
+  \(\mu\), \(\sigma\) = medelvärde och standardavvikelse för efterfrågan
+  hos kund
+\item
+  \(c_{ij}\) = transportkostnad per enhet från i till j
+\end{itemize}
+
+\textbf{Beslutsvariabler:}
+
+\begin{itemize}
+\tightlist
+\item
+  \(x_{ij}\) = antal enheter som skickas från nod i till j, till exempel
+  \(x_{AE}\) från A till E
+\end{itemize}
+
+Det finns 8 länkar från bruken till omlastningen och 6 från omlastningen
+till kunderna, alltså 14 variabler:
+\(x_{AE}, x_{AF}, x_{BE}, x_{BF}, x_{CE}, x_{CF}, x_{DE}, x_{DF}, x_{EG}, x_{EH}, x_{EI}, x_{FG}, x_{FH}, x_{FI}\).
+
 \subsubsection{3b) Generell modell}\label{b-generell-modell}
 
-\subsubsection{3c) Lösning med
-medelefterfrågan}\label{c-luxf6sning-med-medelefterfruxe5gan}
+\textbf{Målfunktion:} minimera den totala transportkostnaden
+\[\begin{aligned}\text{Min } Z = {}& 4x_{AE} + 6x_{AF} + 5x_{BE} + 7x_{BF} + 8x_{CE} + 6x_{CF} + 4x_{DE} + 4x_{DF} \\
+&+ 2x_{EG} + 3x_{EH} + x_{EI} + 2x_{FG} + 2x_{FH} + 4x_{FI}\end{aligned}\]
 
-\subsubsection{3d) Probabilistiska bivillkor (90
-\%)}\label{d-probabilistiska-bivillkor-90}
+\textbf{Bivillkor:}
 
-\subsubsection{3e) Fasta kostnader för
+Bruken kan inte skicka mer än de har:
+\[x_{AE} + x_{AF} \leq 400 \qquad x_{BE} + x_{BF} \leq 350 \qquad x_{CE} + x_{CF} \leq 300 \qquad x_{DE} + x_{DF} \leq 450\]
+
+Allt som kommer in till en omlastningsnod ska skickas vidare, vilket vi
+kallar flödesbalans:
+\[x_{AE} + x_{BE} + x_{CE} + x_{DE} = x_{EG} + x_{EH} + x_{EI}\]
+\[x_{AF} + x_{BF} + x_{CF} + x_{DF} = x_{FG} + x_{FH} + x_{FI}\]
+
+Kunderna ska få minst sin efterfrågan \(d_k\):
+\[x_{EG} + x_{FG} \geq d_G \qquad x_{EH} + x_{FH} \geq d_H \qquad x_{EI} + x_{FI} \geq d_I\]
+
+\[x_{ij} \geq 0\]
+
+Generellt:
+\[\text{Min } Z = \sum_{(i,j)} c_{ij}\,x_{ij}, \qquad \sum_{j \in T} x_{ij} \le s_i \ \ (i \in S), \qquad \sum_{i \in S} x_{it} = \sum_{k \in K} x_{tk} \ \ (t \in T), \qquad \sum_{t \in T} x_{tk} \ge d_k \ \ (k \in K)\]
+
+    \subsubsection{3c) Lösning med medelvärdet som
+efterfrågan}\label{c-luxf6sning-med-medelvuxe4rdet-som-efterfruxe5gan}
+
+Här är \(d = (560, 200, 400)\).
+
+    \begin{figure}
+\centering
+\pandocbounded{\includegraphics[keepaspectratio,alt={bild03.png}]{logistiklabb_files/bild03.png}}
+\caption{bild03.png}
+\end{figure}
+
+    \begin{figure}
+\centering
+\pandocbounded{\includegraphics[keepaspectratio,alt={bild04.png}]{logistiklabb_files/bild04.png}}
+\caption{bild04.png}
+\end{figure}
+
+    Den minsta kostnaden blir 6870 kr. Bruk C används inte alls
+\(x_{CE} = x_{CF} = 0\), eftersom det har de högsta transportkostnaderna
+och de andra bruken räcker för att täcka efterfrågan, 1160 enheter mot
+1200 i utbud utan C. C behövs alltså inte i den optimala lösningen.
+
+    \subsubsection{3d) Probabilistiska
+bivillkor}\label{d-probabilistiska-bivillkor}
+
+Efterfrågan är osäker, så vi kräver att varje kund ska få sin
+efterfrågan uppfylld med minst 90 \% sannolikhet:
+\[P(x_{EG} + x_{FG} \geq D_G) \geq 0{,}90\]
+
+Med standardiserad normalfördelning blir motsvarigheten
+\[x_{EG} + x_{FG} \geq \mu_G + z_{0,90}\,\sigma_G, \qquad z_{0,90} = 1{,}2816,\]
+
+alltså leveransen ska vara medelvärdet plus 1,2816 standardavvikelser.
+Det enda som ändras i modellen är högerleden för efterfrågan.
+
+    \begin{figure}
+\centering
+\pandocbounded{\includegraphics[keepaspectratio,alt={bild05.png}]{logistiklabb_files/bild05.png}}
+\caption{bild05.png}
+\end{figure}
+
+    Och LINGO visar då detta:
+
+    \begin{figure}
+\centering
+\pandocbounded{\includegraphics[keepaspectratio,alt={bild06.png}]{logistiklabb_files/bild06.png}}
+\caption{bild06.png}
+\end{figure}
+
+    \textbf{Högre signifikansnivå.} Vi testar också 95 \% och 99 \%. Det
+enda som ändras är z-värdet i de tre efterfrågeraderna:
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}ll@{}}
+\toprule\noalign{}
+Signifikansnivå & \(z\) \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+90 \% & 1,2816 \\
+95 \% & 1,6449 \\
+99 \% & 2,3263 \\
+\end{longtable}
+}
+
+I LINGO byts de tre sista raderna ut. För 95 \%:
+
+\begin{verbatim}
+xEG + xFG >= 560 + 1.6449*40;
+xEH + xFH >= 200 + 1.6449*20;
+xEI + xFI >= 400 + 1.6449*30;
+\end{verbatim}
+
+Vilket resulterar till:
+
+\begin{figure}
+\centering
+\pandocbounded{\includegraphics[keepaspectratio,alt={bild07.png}]{logistiklabb_files/bild07.png}}
+\caption{bild07.png}
+\end{figure}
+
+Med kostnaden 7965kr.
+
+För 99 \%:
+
+\begin{verbatim}
+xEG + xFG >= 560 + 2.3263*40;
+xEH + xFH >= 200 + 2.3263*20;
+xEI + xFI >= 400 + 2.3263*30;
+\end{verbatim}
+
+Vilket resulterar till:
+
+\begin{figure}
+\centering
+\pandocbounded{\includegraphics[keepaspectratio,alt={bild08.png}]{logistiklabb_files/bild08.png}}
+\caption{bild08.png}
+\end{figure}
+
+Med kostnaden 8435kr.
+
+    Kostnaden ökar alltså, enligt tabell X, med ökad signifikansnivå när vi
+närmar oss 100\%.
+
+    \emph{Tabell X. Kostnader efter höjd signifikansnivå. Samt hur
+efterfrågan och användandet av C ändras.}
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}llll@{}}
+\toprule\noalign{}
+Signifikansnivå & Total efterfrågan & Från bruk C & Kostnad \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Medelvärde (c) & 1 160 & 0 & 6 870 kr \\
+90 \% & 1 275 & 75 & 7 714 kr \\
+95 \% & 1 308 & 108 & 7 965 kr \\
+99 \% & 1 369 & 169 & 8 435 kr \\
+\end{longtable}
+}
+
+Med 90 \% säkerhet ökar kostnaden från 6870 till 7714. Den totala
+efterfrågan som ska täckas blir 1275 enheter istället för 1160 och då
+räcker inte bruken A, B och D (400 + 350 + 450 = 1 200 enheter). Bruk C,
+som inte behövdes i uppgift c) måste nu användas och skickar ca 75
+enheter via F.
+
+    \subsubsection{3e) Fasta kostnader för
 bruken}\label{e-fasta-kostnader-fuxf6r-bruken}
 
-\subsubsection{3f) Kapacitet på länkarna och
-heltal}\label{f-kapacitet-puxe5-luxe4nkarna-och-heltal}
+Om vi utökar modellen i uppgift c):
+
+\begin{figure}
+\centering
+\pandocbounded{\includegraphics[keepaspectratio,alt={bild09.png}]{logistiklabb_files/bild09.png}}
+\caption{bild09.png}
+\end{figure}
+
+    Vi får ut den minsta möjliga kostnaden 7595. Resultatet i LINGO visar:
+
+\begin{figure}
+\centering
+\pandocbounded{\includegraphics[keepaspectratio,alt={bild10.png}]{logistiklabb_files/bild10.png}}
+\caption{bild10.png}
+\end{figure}
+
+    Fabrik C används alltså fortfarande inte. Alltså, om efterfrågan är
+medelvärdet, påverkar fasta kostnader inte strukturen i lösningen.
+
+    Om vi istället utökar modellen i uppgift d):
+
+\begin{figure}
+\centering
+\pandocbounded{\includegraphics[keepaspectratio,alt={bild11.png}]{logistiklabb_files/bild11.png}}
+\caption{bild11.png}
+\end{figure}
+
+Minsta möjliga kostnaden blir 8689. I LINGO visas:
+
+\begin{figure}
+\centering
+\pandocbounded{\includegraphics[keepaspectratio,alt={bild12.png}]{logistiklabb_files/bild12.png}}
+\caption{bild12.png}
+\end{figure}
+
+    Vad händer om bruk B (mill 2) kan leverera 450 i stället för 350
+enheter?
+
+    \begin{figure}
+\centering
+\pandocbounded{\includegraphics[keepaspectratio,alt={bild13.png}]{logistiklabb_files/bild13.png}}
+\caption{bild13.png}
+\end{figure}
+
+Vid användning av medelvärde påverkas inte kostnaden utan förblir 7595.
+Dessutom påverkas inte några variabler, alltså är lösningen exakt den
+samma.
+
+\begin{figure}
+\centering
+\pandocbounded{\includegraphics[keepaspectratio,alt={bild14.png}]{logistiklabb_files/bild14.png}}
+\caption{bild14.png}
+\end{figure}
+
+Vid användning av probalistisk begränsning och standardavvikelse ändras
+kostnaden till 8364. Dessutom ändras värden på några variabler. Vi kan
+nu se att fabrik C inte används i den optimala lösningen längre. Den
+ökade kapaciteten i fabrik B minskade alltså behovet av fler fabriker
+och kan därmed sänka totalkostnaden trots höga servicekrav. Denna modell
+är en Mixed Integer Linear Programming, eller MILP, mer specifikt ett
+fixed-charge transshipment problem.
+
+    \subsubsection{3f) Kapacitet på
+länkarna}\label{f-kapacitet-puxe5-luxe4nkarna}
+
+Vi lägger till kapacitet på 350 på länkarna:
+
+\begin{figure}
+\centering
+\pandocbounded{\includegraphics[keepaspectratio,alt={bild15.png}]{logistiklabb_files/bild15.png}}
+\caption{bild15.png}
+\end{figure}
+
+där LINGO matar ut kostnaden till ca 8789. Länkarna A-E och B-E slår i
+taket på 350 och flödet måste därför ta andra dyrare länkar, vilket
+resulterar i den högre kostnaden.
+
+    Om kapaciteten istället ska vara samma på alla länkar och vi vill hitta
+den minsta kapaciteten K, matar vi detta till LINGO:
+
+\begin{figure}
+\centering
+\pandocbounded{\includegraphics[keepaspectratio,alt={bild16.png}]{logistiklabb_files/bild16.png}}
+\caption{bild16.png}
+\end{figure}
+
+Vi får då ut att K kommer att vara 162,56
+
+    Svaren är inte heltal, eftersom 90\%-efterfrågan inte är heltal. Om vi
+istället använder denna LINGO kod för alla 14 flöden:
+
+\begin{figure}
+\centering
+\pandocbounded{\includegraphics[keepaspectratio,alt={bild17.png}]{logistiklabb_files/bild17.png}}
+\caption{bild17.png}
+\end{figure}
+
+Vi får då en något högre kostnad på 8802 istället.
+
+    Använder vi också heltal för att hitta våran gemensamma minsta
+kapaciteten K, gör vi:
+
+\begin{figure}
+\centering
+\pandocbounded{\includegraphics[keepaspectratio,alt={bild18.png}]{logistiklabb_files/bild18.png}}
+\caption{bild18.png}
+\end{figure}
+
+och får ut att K blir 163.
+
+    Avrundning är överlag inte okej. Det kan bryta flödesbalansen, få ett
+flöde som ligger på 350 att gå över sin gräns eller göra att efterfrågan
+inte täcks om avrundningen görs nedåt.
 
     \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
