@@ -33,9 +33,10 @@ x5_65 + x5_67 + x5_62 - x5_56 - x5_76 - x5_26 = -3300;
 x5_76 - x5_67 = -2440;
 
 ! Färjans kapacitet : 2000 lastbilar per riktning;
-x1_26 + x4_26 + x5_26 <= 2000;
-x1_62 + x4_62 + x5_62 <= 2000;
+x1_26 + x4_26 + x5_26 <= X;
+x1_62 + x4_62 + x5_62 <= Y;
 
 ! Icke negativitet : kmr automatiskt i lingo;
+
 
 
