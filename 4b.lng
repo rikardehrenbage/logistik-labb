@@ -1,15 +1,11 @@
-! Uppgift 4b: minimera körsträckan på väg (mil) med en färja;
 
-! Målfunktion (24): avstånd gånger antal lastbilar på varje väg, färjan räknas inte;
+! Målfunktion: avstånd gånger antal lastbilar på varje väg, färjan räknas inte;
 MIN =
-  3.5*x1_12 + 3.5*x1_21 + 3*x1_23 + 3*x1_32 + 5*x1_34 + 5*x1_43 +
-  25*x1_45 + 25*x1_54 + 4*x1_56 + 4*x1_65 + 2.5*x1_67 + 2.5*x1_76 +
-  3.5*x4_12 + 3.5*x4_21 + 3*x4_23 + 3*x4_32 + 5*x4_34 + 5*x4_43 +
-  25*x4_45 + 25*x4_54 + 4*x4_56 + 4*x4_65 + 2.5*x4_67 + 2.5*x4_76 +
-  3.5*x5_12 + 3.5*x5_21 + 3*x5_23 + 3*x5_32 + 5*x5_34 + 5*x5_43 +
-  25*x5_45 + 25*x5_54 + 4*x5_56 + 4*x5_65 + 2.5*x5_67 + 2.5*x5_76;
+  3.5*x1_12 + 3.5*x1_21 + 3*x1_23 + 3*x1_32 + 5*x1_34 + 5*x1_43 + 25*x1_45 + 25*x1_54 + 4*x1_56 + 4*x1_65 + 2.5*x1_67 + 2.5*x1_76 + 3.5*x4_12 + 3.5*x4_21 + 3*x4_23 + 
+3*x4_32 + 5*x4_34 + 5*x4_43 + 25*x4_45 + 25*x4_54 + 4*x4_56 + 4*x4_65 + 2.5*x4_67 + 2.5*x4_76 + 3.5*x5_12 + 3.5*x5_21 + 3*x5_23 + 3*x5_32 + 5*x5_34 + 5*x5_43 + 
+25*x5_45 + 25*x5_54 + 4*x5_56 + 4*x5_65 + 2.5*x5_67 + 2.5*x5_76;
 
-! Flödesbalans (25) för lastbilar från terminal 1 (nod 1): ut - in;
+! Flödesbalans: för lastbilar från nod1 :ut - in;
 x1_12 - x1_21 = 2850;
 x1_21 + x1_23 + x1_26 - x1_12 - x1_32 - x1_62 = -900;
 x1_32 + x1_34 - x1_23 - x1_43 = -750;
@@ -18,7 +14,7 @@ x1_54 + x1_56 - x1_45 - x1_65 = -10;
 x1_65 + x1_67 + x1_62 - x1_56 - x1_76 - x1_26 = -600;
 x1_76 - x1_67 = -550;
 
-! Flödesbalans (25) för lastbilar från terminal 2 (nod 4): ut - in;
+! Flödesbalans : för lastbilar från nod 4: ut - in;
 x4_12 - x4_21 = -100;
 x4_21 + x4_23 + x4_26 - x4_12 - x4_32 - x4_62 = -2000;
 x4_32 + x4_34 - x4_23 - x4_43 = -1100;
@@ -27,7 +23,7 @@ x4_54 + x4_56 - x4_45 - x4_65 = -150;
 x4_65 + x4_67 + x4_62 - x4_56 - x4_76 - x4_26 = -1400;
 x4_76 - x4_67 = -1250;
 
-! Flödesbalans (25) för lastbilar från terminal 3 (nod 5): ut - in;
+! Flödesbalans för lastbilar från nod 5:ut - in;
 x5_12 - x5_21 = -110;
 x5_21 + x5_23 + x5_26 - x5_12 - x5_32 - x5_62 = -4000;
 x5_32 + x5_34 - x5_23 - x5_43 = -2200;
@@ -36,8 +32,10 @@ x5_54 + x5_56 - x5_45 - x5_65 = 12250;
 x5_65 + x5_67 + x5_62 - x5_56 - x5_76 - x5_26 = -3300;
 x5_76 - x5_67 = -2440;
 
-! Färjans kapacitet (26), 2000 lastbilar per riktning;
+! Färjans kapacitet : 2000 lastbilar per riktning;
 x1_26 + x4_26 + x5_26 <= 2000;
 x1_62 + x4_62 + x5_62 <= 2000;
 
-! Icke-negativitet (27) gäller automatiskt i LINGO;
+! Icke negativitet : kmr automatiskt i lingo;
+
+
